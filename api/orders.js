@@ -1,0 +1,122 @@
+const express = require('express');
+const router = express.Router();
+const Order = require('../models/Order');
+const Client = require('../models/Clients');
+const nodemailer = require('nodemailer');
+
+//Add a new product
+router.post('/', (req, res) => {
+    const {name, phone, note, email} = req.body[0];
+    const product = req.body[1];
+    const productList = product.map(pro => {
+        const weight = pro.weight / 1000;
+        return `<tr>
+                <td style="text-align: center; padding : 3px; border-bottom: 1px solid #ddd;">${
+                    pro.id
+                }</td>
+                <td style="text-align: center; padding : 3px; border-bottom: 1px solid #ddd;">${
+                    pro.age
+                }</td>
+                <td style="text-align: center; padding : 3px; border-bottom: 1px solid #ddd;">${weight}</td>
+                <td style="text-align: center; padding : 3px; border-bottom: 1px solid #ddd;">${
+                    pro.sex
+                }</td>
+                <td style="text-align: center; padding : 3px; border-bottom: 1px solid #ddd;">${
+                    pro.breed
+                }</td>
+                <td style="text-align: center; padding : 3px; border-bottom: 1px solid #ddd;">${
+                    pro.location
+                }</td>
+            </tr>`;
+    });
+    const Note = note.length === 0 ? 'no notes' : note;
+    const information = `
+    <div>
+        <h1> New order request </h1>
+        <h2> Below you can find all the details of your request</h2>
+        <ul>
+            <li> Name: ${name} </li>
+            <li> Phone Number: ${phone} </li>
+            <li> Email: ${email} </li>
+            <li> Note: ${Note} </li>
+        <ul>
+        <h1>Orders</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th scope='col' style="border-bottom: 1px solid #ddd;">ID</th>
+                    <th scope='col' style="border-bottom: 1px solid #ddd;">Age</th>
+                    <th scope='col' style="border-bottom: 1px solid #ddd;">Weight</th>
+                    <th scope='col' style="border-bottom: 1px solid #ddd;">Sex</th>
+                    <th scope='col' style="border-bottom: 1px solid #ddd;">Breed</th>
+                    <th scope='col' style="border-bottom: 1px solid #ddd;">Location</th>
+                </tr>
+            </thead>
+            <tbody>${productList}</tbody>
+        </table>
+        <h3 style="color: blue">This email is a confirmation that we received your request and currently our team is working on it . We will contact you as soon as possible</h3>
+    </div>
+    `;
+
+    // create reusable transporter object using the default SMTP transport
+    let transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        auth: {
+            user: 'temporaryEmail9921@gmail.com',
+            pass: 'temporary_email',
+        },
+        // tls: {
+        //     rejectUnaurhoeized: false,
+        // },
+    });
+
+    // setup email data with unicode symbols
+    let mailOptions = {
+        from: 'temporaryEmail9921@gmail.com', // sender address
+        to: `${email} , temporaryEmail9921@gmail.com`, // list of receivers
+        subject: 'New order', // Subject line
+        html: information, // html body
+    };
+
+    // send mail with defined transport object
+    transporter.sendMail(mailOptions, (err, info) => {
+        if (err) res.status(400).json(err);
+        else {
+            Client.create({
+                name,
+                note,
+                phone,
+                email,
+            })
+                .then(cli => {
+                    product.map(prod => {
+                        Order.create({
+                            productId: prod.id,
+                            age: prod.age,
+                            weight: prod.weight,
+                            sex: prod.sex,
+                            breed: prod.breed,
+                            location: prod.location,
+                            description: prod.description,
+                            clientId: cli.id,
+                        }).catch(err => res.status(400).json(err));
+                    });
+                })
+                .catch(err => res.status(400).json(err));
+
+            res.status(200).json('Email sent');
+        }
+    });
+});
+
+//Get list of the orders
+router.get('/', (req, res) => {
+    Order.findAll()
+        .then(order => {
+            res.json({
+                data: order,
+            });
+        })
+        .catch(err => res.status(404).json(err));
+});
+module.exports = router;
