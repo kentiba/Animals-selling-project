@@ -1,0 +1,38 @@
+/* styleing product componenet */
+.product {
+    width: 16rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.product:hover {
+    transform: scale(1.07);
+}
+
+.product img {
+    min-height: 15rem;
+    max-height: 15rem;
+}
+
+/* styling productDetails component */
+
+.productDetail img {
+    min-height: 26rem;
+    max-height: 26rem;
+}
+
+/* styling editProject */
+
+.editProject img {
+    width: 50%;
+    height: 20rem;
+}
+
+/* styling alert in product component */
+.custom-ui {
+    width: 50vw;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 16px;
+}
