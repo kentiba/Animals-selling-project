@@ -9,6 +9,7 @@ import {
 import defaultImage from '../../assets/default.png';
 import Spinner from '../../assets/loading.gif';
 import './checkout.css';
+import AgeConvertor from '../common/AgeConvertor';
 
 class Checkout extends Component {
     state = {
@@ -81,7 +82,7 @@ class Checkout extends Component {
                             height={75}
                         />
                     </td>
-                    <td>{item.age}</td>
+                    <td>{AgeConvertor(item.age)}</td>
                     <td>{weight}</td>
                     <td>{item.sex}</td>
                     <td>{item.breed}</td>

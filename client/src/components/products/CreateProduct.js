@@ -108,9 +108,9 @@ class CreateProduct extends Component {
                         )}
                     </div>
                     <div className='form-group'>
-                        <label htmlFor='age'>Age</label>
+                        <label htmlFor='age'>Date of birth</label>
                         <input
-                            type='text'
+                            type='date'
                             className={classnames(
                                 'form-control form-control-lg w-50 m-auto',
                                 {
@@ -120,9 +120,6 @@ class CreateProduct extends Component {
                             id='age'
                             onChange={this.handleChange}
                         />
-                        <small className='text-info'>
-                            *E.g. 2 Years and 4 months
-                        </small>
                         {errors.age && (
                             <div className='invalid-feedback'>{errors.age}</div>
                         )}

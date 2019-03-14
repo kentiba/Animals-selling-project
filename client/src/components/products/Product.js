@@ -7,6 +7,7 @@ import {addToCart} from '../../store/actions/projectActions';
 import {confirmAlert} from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import defaultImage from '../../assets/default.png';
+import AgeConvertor from '../common/AgeConvertor';
 class Product extends Component {
     handleClick = e => {
         e.preventDefault();
@@ -48,7 +49,9 @@ class Product extends Component {
                         />
                         <ul className='list-group list-group-flush'>
                             <li className='list-group-item'>Breed: {breed}</li>
-                            <li className='list-group-item'>Age: {age}</li>
+                            <li className='list-group-item'>
+                                Age : {AgeConvertor(age)}
+                            </li>
                             <li className='list-group-item'>Sex: {sex}</li>
                             <li className='list-group-item'>
                                 Weight: {weight / 1000}

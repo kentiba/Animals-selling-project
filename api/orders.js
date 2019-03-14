@@ -3,6 +3,18 @@ const router = express.Router();
 const Order = require('../models/Order');
 const Client = require('../models/Clients');
 const nodemailer = require('nodemailer');
+const dayjs = require('dayjs');
+
+// age convertor
+const Age = age => {
+    if (dayjs().diff(age, 'year') >= 1) {
+        return dayjs().diff(age, 'year') + ' Years';
+    } else if (dayjs().diff(age, 'month') >= 1) {
+        return dayjs().diff(age, 'month') + ' Months';
+    } else {
+        return dayjs().diff(age, 'day') + ' Days';
+    }
+};
 
 //Add a new product
 router.post('/', (req, res) => {
@@ -14,9 +26,9 @@ router.post('/', (req, res) => {
                 <td style="text-align: center; padding : 3px; border-bottom: 1px solid #ddd;">${
                     pro.id
                 }</td>
-                <td style="text-align: center; padding : 3px; border-bottom: 1px solid #ddd;">${
-                    pro.age
-                }</td>
+                <td style="text-align: center; padding : 3px; border-bottom: 1px solid #ddd;">${Age(
+                    pro.age,
+                )}</td>
                 <td style="text-align: center; padding : 3px; border-bottom: 1px solid #ddd;">${weight}</td>
                 <td style="text-align: center; padding : 3px; border-bottom: 1px solid #ddd;">${
                     pro.sex

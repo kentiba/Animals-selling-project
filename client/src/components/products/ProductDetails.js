@@ -5,7 +5,8 @@ import {addToCart} from '../../store/actions/projectActions';
 import {confirmAlert} from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import defaultImage from '../../assets/default.png';
-import daysjs from 'dayjs';
+import AgeConvertor from '../common/AgeConvertor';
+import dayjs from 'dayjs';
 
 class ProductDeatils extends Component {
     handleClick = e => {
@@ -46,6 +47,7 @@ class ProductDeatils extends Component {
             image,
             created,
         } = this.props.cow;
+
         return (
             <div
                 className='modal fade'
@@ -70,7 +72,9 @@ class ProductDeatils extends Component {
                                 <li className='list-group-item'>
                                     Breed: {breed}
                                 </li>
-                                <li className='list-group-item'>Age: {age}</li>
+                                <li className='list-group-item'>
+                                    Age : {AgeConvertor(age)}
+                                </li>
                                 <li className='list-group-item'>Sex: {sex}</li>
                                 <li className='list-group-item'>
                                     Weight: {weight / 1000}
@@ -86,7 +90,7 @@ class ProductDeatils extends Component {
                                 </li>
                                 <li className='list-group-item'>
                                     Posted on:{' '}
-                                    {daysjs(created).format('MMM DD YYYY')}
+                                    {dayjs(created).format('MMM DD YYYY')}
                                 </li>
                             </ul>
                         </div>

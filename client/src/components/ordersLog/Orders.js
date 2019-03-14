@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {getOrdersList} from '../../store/actions/projectActions';
 import './order.css';
+import dayjs from 'dayjs';
 class Orders extends Component {
     componentDidMount() {
         this.props.getOrdersList();
@@ -10,11 +11,12 @@ class Orders extends Component {
 
     render() {
         const {ordersList, errors} = this.props;
+
         const renderList = ordersList.map(order => {
             return (
                 <tr key={order.id} className='order'>
                     <td>{order.productId}</td>
-                    <td>{order.age}</td>
+                    <td>{dayjs(order.age).format('DD/MM/YYYY')}</td>
                     <td>{order.weight / 1000}</td>
                     <td>{order.sex}</td>
                     <td>{order.breed}</td>
@@ -38,7 +40,7 @@ class Orders extends Component {
                             <thead>
                                 <tr>
                                     <th scope='col'>ProductId</th>
-                                    <th scope='col'>Age</th>
+                                    <th scope='col'>Date of Birth</th>
                                     <th scope='col'>Weight</th>
                                     <th scope='col'>Sex</th>
                                     <th scope='col'>Breed</th>

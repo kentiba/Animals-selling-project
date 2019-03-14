@@ -10,7 +10,7 @@ module.exports = db.define(
             autoIncrement: true,
         },
         age: {
-            type: Sequelize.STRING,
+            type: Sequelize.DATE,
             allowNull: false,
         },
         weight: {

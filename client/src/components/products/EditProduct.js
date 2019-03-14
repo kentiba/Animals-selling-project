@@ -92,6 +92,9 @@ class EditProject extends Component {
             description,
             errors,
         } = this.state;
+
+        const Age = age.substr(0, 10);
+
         return (
             <div className='container editProject text-center'>
                 <form
@@ -148,9 +151,9 @@ class EditProject extends Component {
                         )}
                     </div>
                     <div className='form-group w-50 m-auto'>
-                        <label htmlFor='age'>Age</label>
+                        <label htmlFor='age'>Date of birth</label>
                         <input
-                            type='text'
+                            type='date'
                             className={classnames(
                                 'form-control form-control-lg',
                                 {
@@ -158,12 +161,10 @@ class EditProject extends Component {
                                 },
                             )}
                             id='age'
-                            defaultValue={age}
+                            defaultValue={Age}
                             onChange={this.handleChange}
                         />
-                        <small className='text-info'>
-                            *E.g. 2 Years and 4 months
-                        </small>
+                        <small className='text-info'>*Month/Day/Year</small>
                         {errors.age && (
                             <div className='invalid-feedback'>{errors.age}</div>
                         )}
