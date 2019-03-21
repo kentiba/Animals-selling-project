@@ -36,3 +36,26 @@
     border: 1px solid black;
     border-radius: 16px;
 }
+
+#searchBar {
+    float: left;
+    margin-left: 15px;
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.searchBar-child {
+}
+
+.ageInput {
+    display: flex;
+}
+
+.ageInputChild {
+    flex-basis: 100%;
+    min-width: 0px;
+}
+.ageInputYear {
+}

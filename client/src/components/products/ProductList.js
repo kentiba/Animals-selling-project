@@ -5,6 +5,7 @@ import {getProductList} from '../../store/actions/projectActions';
 import Loading from '../../assets/loading.gif';
 import Pagination from 'rc-pagination';
 import 'rc-pagination/assets/index.css';
+import SearchField from '../SearchField';
 
 class ProductList extends Component {
     state = {
@@ -54,6 +55,7 @@ class ProductList extends Component {
 
         return (
             <div className='py-5 mt-3'>
+                <SearchField />
                 <ul className='pagination justify-content-center'>
                     {renderProducts.length !== 0 && renderPageNumbers}
                 </ul>

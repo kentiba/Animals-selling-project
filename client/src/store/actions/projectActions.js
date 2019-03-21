@@ -11,9 +11,25 @@ import axios from 'axios';
 
 // to get the list of products
 
-export const getProductList = () => dispatch => {
+export const getProductList = (
+    ageFrom,
+    ageTo,
+    weightFrom,
+    weightTo,
+    location,
+    breed,
+) => dispatch => {
     axios
-        .get('/products/get')
+        .get('/products/get', {
+            params: {
+                ageFrom,
+                ageTo,
+                weightFrom,
+                weightTo,
+                location,
+                breed,
+            },
+        })
         .then(res =>
             dispatch({
                 type: GET_PRODUCT_LIST,

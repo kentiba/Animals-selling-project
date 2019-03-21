@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const Product = require('../models/Product');
 const fs = require('fs');
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
 // Load Input Validation
 const validateProductInput = require('../validations/product');
@@ -41,13 +43,38 @@ const upload = multer({
 
 //Get list of the products
 router.get('/get', (req, res) => {
-    Product.findAll()
+    const {ageFrom, ageTo, weightFrom, weightTo, location, breed} = req.query;
+    console.log(req.query);
+    Product.findAll({
+        where: {
+            age: {
+                [Op.lt]: ageFrom || new Date().toISOString(),
+                [Op.gt]: ageTo || new Date(-8640000000000000),
+            },
+            weight: {
+                [Op.between]: [
+                    weightFrom || 0,
+                    weightTo || Number.MAX_SAFE_INTEGER,
+                ],
+            },
+            location: {
+                [Op.like]: `%${location || ''}`,
+            },
+            breed: {
+                [Op.like]: `%${breed || ''}%`,
+            },
+        },
+    })
         .then(products => {
             res.json({
                 data: products,
             });
         })
-        .catch(err => res.status(404).json(err));
+        .catch(err => {
+            console.log('Error in sql call\n');
+            console.log(err);
+            res.status(404).json(err);
+        });
 });
 
 //Add a new product
