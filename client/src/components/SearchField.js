@@ -20,9 +20,9 @@ class SearchField extends Component {
 
     handleChange = e => {
         this.setState({[e.target.id]: e.target.value});
-        // console.log(e);
     };
     handleSubmit = e => {
+        e.preventDefault();
         const {
             ageFromyy,
             ageFrommm,
@@ -54,7 +54,6 @@ class SearchField extends Component {
                   )
                 : '';
 
-        e.preventDefault();
         this.props.getProductList(
             ageFrom,
             ageTo,
@@ -63,32 +62,31 @@ class SearchField extends Component {
             location,
             breed,
         );
-        console.log(e);
     };
     render() {
         return (
             <div id='searchBar'>
-                <div className='searchBar-child' id='searchAge'>
+                <div>
                     <p>Age</p>
                     <p>From</p>
                     <div className='ageInput'>
                         <input
                             type='number'
-                            className='ageInputYear ageInputChild'
+                            className='ageInputChild'
                             id='ageFromyy'
                             placeholder='Year'
                             onChange={this.handleChange}
                         />
                         <input
                             type='number'
-                            className='ageInputMonth ageInputChild'
+                            className='ageInputChild'
                             id='ageFrommm'
                             placeholder='Month'
                             onChange={this.handleChange}
                         />
                         <input
                             type='number'
-                            className='ageInputDay ageInputChild'
+                            className='ageInputChild'
                             id='ageFromdd'
                             placeholder='Day'
                             onChange={this.handleChange}
@@ -99,28 +97,28 @@ class SearchField extends Component {
                     <div className='ageInput'>
                         <input
                             type='number'
-                            className='ageInputYear ageInputChild'
+                            className='ageInputChild'
                             id='ageToyy'
                             placeholder='Year'
                             onChange={this.handleChange}
                         />
                         <input
                             type='number'
-                            className='ageInputMonth ageInputChild'
+                            className='ageInputChild'
                             id='ageTomm'
                             placeholder='Month'
                             onChange={this.handleChange}
                         />
                         <input
                             type='number'
-                            className='ageInputDay ageInputChild'
+                            className='ageInputChild'
                             id='ageTodd'
                             placeholder='Day'
                             onChange={this.handleChange}
                         />
                     </div>
                 </div>
-                <div className='searchBar-child' id='searchWeight'>
+                <div>
                     <p>Weight</p>
 
                     <label htmlFor='weightfrom'>From</label>
@@ -139,7 +137,7 @@ class SearchField extends Component {
                         onChange={this.handleChange}
                     />
                 </div>
-                <div className='searchBar-child' id='searchLocation'>
+                <div>
                     <label htmlFor='location'>Location</label>
                     <input
                         type='text'
@@ -148,7 +146,7 @@ class SearchField extends Component {
                         onChange={this.handleChange}
                     />
                 </div>
-                <div className='searchBar-child' id='searchBreed'>
+                <div>
                     <label htmlFor='breed'>Breed</label>
                     <input
                         type='text'
@@ -174,18 +172,7 @@ const mapDispatchToProps = dispatch => {
             weightTo,
             location,
             breed,
-        ) => {
-            console.log(
-                '' +
-                    ageFrom +
-                    '\n' +
-                    ageTo +
-                    '\n' +
-                    weightFrom +
-                    weightTo +
-                    location +
-                    breed,
-            );
+        ) =>
             dispatch(
                 getProductList(
                     ageFrom,
@@ -195,8 +182,7 @@ const mapDispatchToProps = dispatch => {
                     location,
                     breed,
                 ),
-            );
-        },
+            ),
     };
 };
 

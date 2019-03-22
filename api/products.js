@@ -3,6 +3,8 @@ const router = express.Router();
 const Product = require('../models/Product');
 const fs = require('fs');
 const Sequelize = require('sequelize');
+
+// Importing Operators from Sequelize
 const Op = Sequelize.Op;
 
 // Load Input Validation
@@ -44,7 +46,6 @@ const upload = multer({
 //Get list of the products
 router.get('/get', (req, res) => {
     const {ageFrom, ageTo, weightFrom, weightTo, location, breed} = req.query;
-    console.log(req.query);
     Product.findAll({
         where: {
             age: {
@@ -71,8 +72,6 @@ router.get('/get', (req, res) => {
             });
         })
         .catch(err => {
-            console.log('Error in sql call\n');
-            console.log(err);
             res.status(404).json(err);
         });
 });

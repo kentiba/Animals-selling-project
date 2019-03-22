@@ -37,6 +37,8 @@
     border-radius: 16px;
 }
 
+/* Styingling SearchField Component */
+
 #searchBar {
     float: left;
     margin-left: 15px;
@@ -46,9 +48,6 @@
     text-align: center;
 }
 
-.searchBar-child {
-}
-
 .ageInput {
     display: flex;
 }
@@ -56,6 +55,4 @@
 .ageInputChild {
     flex-basis: 100%;
     min-width: 0px;
-}
-.ageInputYear {
 }
