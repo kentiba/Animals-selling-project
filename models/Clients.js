@@ -24,6 +24,3 @@ module.exports = db.define('clients', {
         type: Sequelize.STRING,
     },
 });
-
-//to create the table
-db.sync();

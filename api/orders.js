@@ -6,13 +6,13 @@ const nodemailer = require('nodemailer');
 const dayjs = require('dayjs');
 
 // age convertor
-const Age = age => {
-    if (dayjs().diff(age, 'year') >= 1) {
-        return dayjs().diff(age, 'year') + ' Years';
-    } else if (dayjs().diff(age, 'month') >= 1) {
-        return dayjs().diff(age, 'month') + ' Months';
+const Age = dateOfBirth => {
+    if (dayjs().diff(dateOfBirth, 'year') >= 1) {
+        return dayjs().diff(dateOfBirth, 'year') + ' Years';
+    } else if (dayjs().diff(dateOfBirth, 'month') >= 1) {
+        return dayjs().diff(dateOfBirth, 'month') + ' Months';
     } else {
-        return dayjs().diff(age, 'day') + ' Days';
+        return dayjs().diff(dateOfBirth, 'day') + ' Days';
     }
 };
 
@@ -27,7 +27,7 @@ router.post('/', (req, res) => {
                     pro.id
                 }</td>
                 <td style="text-align: center; padding : 3px; border-bottom: 1px solid #ddd;">${Age(
-                    pro.age,
+                    pro.dateOfBirth,
                 )}</td>
                 <td style="text-align: center; padding : 3px; border-bottom: 1px solid #ddd;">${weight}</td>
                 <td style="text-align: center; padding : 3px; border-bottom: 1px solid #ddd;">${
@@ -102,15 +102,17 @@ router.post('/', (req, res) => {
             })
                 .then(cli => {
                     product.map(prod => {
-                        Order.create({
+                        //we can use createOrder here since we set up the
+                        //assosciation between Order and Client in app.js
+                        cli.createOrder({
                             productId: prod.id,
-                            age: prod.age,
+                            dateOfBirth: prod.dateOfBirth,
                             weight: prod.weight,
                             sex: prod.sex,
                             breed: prod.breed,
                             location: prod.location,
                             description: prod.description,
-                            clientId: cli.id,
+                            // clientId: cli.id,
                         }).catch(err => res.status(400).json(err));
                     });
                 })

@@ -84,7 +84,6 @@ export const createProduct = (product, history) => dispatch => {
     axios
         .post('/products/add', product)
         .then(() => {
-            history.push('/');
             window.location.reload(true);
         })
         .catch(err =>
@@ -118,8 +117,8 @@ export const submitRequest = (info, history) => dispatch => {
     axios
         .post('/orders', info)
         .then(() => {
-            window.location.reload(true);
             history.push('/sent');
+            window.location.reload(true);
         })
         .catch(err =>
             dispatch({

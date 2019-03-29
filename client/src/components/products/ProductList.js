@@ -5,7 +5,7 @@ import {getProductList} from '../../store/actions/projectActions';
 import Loading from '../../assets/loading.gif';
 import Pagination from 'rc-pagination';
 import 'rc-pagination/assets/index.css';
-import SearchField from '../SearchField';
+import SearchField from '../searchField/SearchField';
 
 class ProductList extends Component {
     state = {

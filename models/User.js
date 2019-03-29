@@ -31,6 +31,3 @@ module.exports = db.define(
         timestamps: false,
     },
 );
-
-//to create the table
-db.sync();

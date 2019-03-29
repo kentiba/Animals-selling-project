@@ -1,0 +1,40 @@
+#searchBar {
+    float: left;
+    margin-top: 1rem;
+    margin-left: 3rem;
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: rgb(140, 250, 186);
+    border-radius: 5%;
+}
+
+#searchBar p,
+h4,
+label {
+    font-weight: bold;
+    padding-top: 3px;
+}
+
+.age,
+.weight {
+    border: 1px solid rgb(236, 216, 178);
+    padding: 4px;
+    background-color: rgb(229, 246, 253);
+}
+
+.ageInput {
+    display: flex;
+}
+
+.ageInputChild {
+    flex-basis: 100%;
+    min-width: 0px;
+}
+.searchButton {
+    background-color: rgb(251, 255, 29);
+}
+.searchButton:hover {
+    background-color: rgb(226, 230, 32);
+}

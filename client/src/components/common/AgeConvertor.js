@@ -1,12 +1,12 @@
 import dayjs from 'dayjs';
 
-const AgeConvertor = age => {
-    if (dayjs().diff(age, 'year') >= 1) {
-        return dayjs().diff(age, 'year') + ' Years';
-    } else if (dayjs().diff(age, 'month') >= 1) {
-        return dayjs().diff(age, 'month') + ' Months';
+const AgeConvertor = dateOfBirth => {
+    if (dayjs().diff(dateOfBirth, 'year') >= 1) {
+        return dayjs().diff(dateOfBirth, 'year') + ' Years';
+    } else if (dayjs().diff(dateOfBirth, 'month') >= 1) {
+        return dayjs().diff(dateOfBirth, 'month') + ' Months';
     } else {
-        return dayjs().diff(age, 'day') + ' Days';
+        return dayjs().diff(dateOfBirth, 'day') + ' Days';
     }
 };
 export default AgeConvertor;

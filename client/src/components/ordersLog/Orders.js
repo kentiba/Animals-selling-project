@@ -16,7 +16,7 @@ class Orders extends Component {
             return (
                 <tr key={order.id} className='order'>
                     <td>{order.productId}</td>
-                    <td>{dayjs(order.age).format('DD/MM/YYYY')}</td>
+                    <td>{dayjs(order.dateOfBirth).format('DD/MM/YYYY')}</td>
                     <td>{order.weight / 1000}</td>
                     <td>{order.sex}</td>
                     <td>{order.breed}</td>

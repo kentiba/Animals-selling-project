@@ -13,7 +13,7 @@ module.exports = db.define('orders', {
         primaryKey: true,
         allowNull: false,
     },
-    age: {
+    dateOfBirth: {
         type: Sequelize.DATE,
         allowNull: false,
     },
@@ -36,10 +36,4 @@ module.exports = db.define('orders', {
     description: {
         type: Sequelize.STRING,
     },
-    clientId: {
-        type: Sequelize.INTEGER,
-    },
 });
-
-//to create the table
-db.sync();

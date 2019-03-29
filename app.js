@@ -4,6 +4,10 @@ const bodyParser = require('body-parser');
 const db = require('./config/db');
 const port = process.env.PORT || 4000;
 
+//import models
+const Client = require('./models/Clients');
+const Order = require('./models/Order');
+
 const app = express();
 
 //Enable all CORS Requests
@@ -13,13 +17,26 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
-//connect to db using sequlizer
+//connect to db using sequlize
 db.authenticate()
     .then(() => {
         console.log('Connection has been established successfully.');
     })
     .catch(err => {
         console.error('Unable to connect to the database:', err);
+    });
+
+//create association
+Client.hasMany(Order);
+Order.belongsTo(Client);
+
+//to create table using sequlize if not exist
+db.sync()
+    .then(() => {
+        console.log('Tables have been created');
+    })
+    .catch(err => {
+        console.error('Unable to create tables:', err);
     });
 
 //to make uploads folder avaliable everywhere

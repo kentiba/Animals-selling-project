@@ -6,7 +6,7 @@ import {createProduct} from '../../store/actions/projectActions';
 
 class CreateProduct extends Component {
     state = {
-        age: '',
+        dateOfBirth: '',
         weight: '',
         sex: '',
         location: '',
@@ -33,7 +33,7 @@ class CreateProduct extends Component {
         e.preventDefault();
         const fd = new FormData();
         const {
-            age,
+            dateOfBirth,
             sex,
             location,
             weight,
@@ -42,7 +42,7 @@ class CreateProduct extends Component {
             image,
         } = this.state;
 
-        age.length !== 0 && fd.append('age', age);
+        dateOfBirth.length !== 0 && fd.append('dateOfBirth', dateOfBirth);
         weight.length !== 0 &&
             fd.append('weight', (weight * 1000).toString().trim());
         sex.length !== 0 && fd.append('sex', sex);
@@ -108,20 +108,22 @@ class CreateProduct extends Component {
                         )}
                     </div>
                     <div className='form-group'>
-                        <label htmlFor='age'>Date of birth</label>
+                        <label htmlFor='dateOfBirth'>Date of birth</label>
                         <input
                             type='date'
                             className={classnames(
                                 'form-control form-control-lg w-50 m-auto',
                                 {
-                                    'is-invalid': errors.age,
+                                    'is-invalid': errors.dateOfBirth,
                                 },
                             )}
-                            id='age'
+                            id='dateOfBirth'
                             onChange={this.handleChange}
                         />
-                        {errors.age && (
-                            <div className='invalid-feedback'>{errors.age}</div>
+                        {errors.dateOfBirth && (
+                            <div className='invalid-feedback'>
+                                {errors.dateOfBirth}
+                            </div>
                         )}
                     </div>
                     <div className='form-group'>

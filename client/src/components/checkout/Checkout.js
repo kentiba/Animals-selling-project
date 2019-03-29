@@ -82,7 +82,7 @@ class Checkout extends Component {
                             height={75}
                         />
                     </td>
-                    <td>{AgeConvertor(item.age)}</td>
+                    <td>{AgeConvertor(item.dateOfBirth)}</td>
                     <td>{weight}</td>
                     <td>{item.sex}</td>
                     <td>{item.breed}</td>

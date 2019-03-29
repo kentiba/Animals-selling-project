@@ -36,7 +36,7 @@ class Product extends Component {
         }
     };
     render() {
-        const {id, weight, age, sex, breed, image} = this.props.cow;
+        const {id, weight, dateOfBirth, sex, breed, image} = this.props.cow;
         return (
             <div>
                 <div className='card product text-center p-3 m-3'>
@@ -50,7 +50,7 @@ class Product extends Component {
                         <ul className='list-group list-group-flush'>
                             <li className='list-group-item'>Breed: {breed}</li>
                             <li className='list-group-item'>
-                                Age : {AgeConvertor(age)}
+                                Age : {AgeConvertor(dateOfBirth)}
                             </li>
                             <li className='list-group-item'>Sex: {sex}</li>
                             <li className='list-group-item'>

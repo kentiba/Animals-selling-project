@@ -9,7 +9,7 @@ module.exports = db.define(
             primaryKey: true,
             autoIncrement: true,
         },
-        age: {
+        dateOfBirth: {
             type: Sequelize.DATE,
             allowNull: false,
         },
@@ -45,6 +45,3 @@ module.exports = db.define(
         freezeTableName: true,
     },
 );
-
-//to create the table
-db.sync();

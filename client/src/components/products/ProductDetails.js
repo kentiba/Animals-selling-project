@@ -39,7 +39,7 @@ class ProductDeatils extends Component {
         const {
             id,
             weight,
-            age,
+            dateOfBirth,
             sex,
             breed,
             location,
@@ -73,7 +73,7 @@ class ProductDeatils extends Component {
                                     Breed: {breed}
                                 </li>
                                 <li className='list-group-item'>
-                                    Age : {AgeConvertor(age)}
+                                    Age : {AgeConvertor(dateOfBirth)}
                                 </li>
                                 <li className='list-group-item'>Sex: {sex}</li>
                                 <li className='list-group-item'>

@@ -11,14 +11,14 @@ module.exports = function validateProductInput(data) {
         return RE.test(input);
     };
 
-    data.age = !isEmpty(data.age) ? data.age : '';
+    data.dateOfBirth = !isEmpty(data.dateOfBirth) ? data.dateOfBirth : '';
     data.weight = !isEmpty(data.weight) ? data.weight : '';
     data.sex = !isEmpty(data.sex) ? data.sex : '';
     data.location = !isEmpty(data.location) ? data.location : '';
     data.breed = !isEmpty(data.breed) ? data.breed : '';
 
-    if (isEmpty(data.age)) {
-        errors.age = 'Age field is required';
+    if (isEmpty(data.dateOfBirth)) {
+        errors.dateOfBirth = 'Age field is required';
     }
     if (!IsNumeric(data.weight)) {
         errors.weight = 'Weight field must be a number';

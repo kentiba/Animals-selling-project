@@ -48,7 +48,7 @@ router.get('/get', (req, res) => {
     const {ageFrom, ageTo, weightFrom, weightTo, location, breed} = req.query;
     Product.findAll({
         where: {
-            age: {
+            dateOfBirth: {
                 [Op.lt]: ageFrom || new Date().toISOString(),
                 [Op.gt]: ageTo || new Date(-8640000000000000),
             },
@@ -59,7 +59,7 @@ router.get('/get', (req, res) => {
                 ],
             },
             location: {
-                [Op.like]: `%${location || ''}`,
+                [Op.like]: `${location || ''}%`,
             },
             breed: {
                 [Op.like]: `%${breed || ''}%`,
@@ -99,12 +99,19 @@ router.post('/add', (req, res, err) => {
                 return res.status(400).json(errors);
             }
             //when the form passes all the checks , create a new product
-            const {weight, age, sex, breed, location, description} = req.body;
+            const {
+                weight,
+                dateOfBirth,
+                sex,
+                breed,
+                location,
+                description,
+            } = req.body;
             const image = req.file ? req.file.path : '';
 
             Product.create({
                 weight,
-                age,
+                dateOfBirth,
                 sex,
                 image,
                 breed,
@@ -143,7 +150,7 @@ router.put('/update', (req, res) => {
             const {
                 id,
                 weight,
-                age,
+                dateOfBirth,
                 sex,
                 breed,
                 location,
@@ -164,7 +171,7 @@ router.put('/update', (req, res) => {
                         project
                             .update({
                                 weight,
-                                age,
+                                dateOfBirth,
                                 sex,
                                 image,
                                 breed,
@@ -177,7 +184,7 @@ router.put('/update', (req, res) => {
                         project
                             .update({
                                 weight,
-                                age,
+                                dateOfBirth,
                                 sex,
                                 breed,
                                 location,

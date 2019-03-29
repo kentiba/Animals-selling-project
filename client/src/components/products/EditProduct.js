@@ -7,7 +7,7 @@ import defaultImage from '../../assets/default.png';
 
 class EditProject extends Component {
     state = {
-        age: '',
+        dateOfBirth: '',
         weight: '',
         sex: '',
         location: '',
@@ -22,7 +22,7 @@ class EditProject extends Component {
     componentDidMount() {
         if (this.props.project) {
             this.setState({
-                age: this.props.project.age,
+                dateOfBirth: this.props.project.dateOfBirth,
                 weight: this.props.project.weight / 1000,
                 sex: this.props.project.sex,
                 location: this.props.project.location,
@@ -54,7 +54,7 @@ class EditProject extends Component {
         e.preventDefault();
         const fd = new FormData();
         const {
-            age,
+            dateOfBirth,
             sex,
             location,
             breed,
@@ -63,7 +63,7 @@ class EditProject extends Component {
             id,
             updatedImage,
         } = this.state;
-        age.length !== 0 && fd.append('age', age);
+        dateOfBirth.length !== 0 && fd.append('dateOfBirth', dateOfBirth);
         weight.length !== 0 &&
             fd.append('weight', (weight * 1000).toString().trim());
         sex.length !== 0 && fd.append('sex', sex);
@@ -83,7 +83,7 @@ class EditProject extends Component {
     };
     render() {
         const {
-            age,
+            dateOfBirth,
             weight,
             sex,
             location,
@@ -93,7 +93,7 @@ class EditProject extends Component {
             errors,
         } = this.state;
 
-        const Age = age.substr(0, 10);
+        const DOB = dateOfBirth.substr(0, 10);
 
         return (
             <div className='container editProject text-center'>
@@ -151,22 +151,24 @@ class EditProject extends Component {
                         )}
                     </div>
                     <div className='form-group w-50 m-auto'>
-                        <label htmlFor='age'>Date of birth</label>
+                        <label htmlFor='dateOfBirth'>Date of birth</label>
                         <input
                             type='date'
                             className={classnames(
                                 'form-control form-control-lg',
                                 {
-                                    'is-invalid': errors.age,
+                                    'is-invalid': errors.dateOfBirth,
                                 },
                             )}
-                            id='age'
-                            defaultValue={Age}
+                            id='dateOfBirth'
+                            defaultValue={DOB}
                             onChange={this.handleChange}
                         />
                         <small className='text-info'>*Month/Day/Year</small>
-                        {errors.age && (
-                            <div className='invalid-feedback'>{errors.age}</div>
+                        {errors.dateOfBirth && (
+                            <div className='invalid-feedback'>
+                                {errors.dateOfBirth}
+                            </div>
                         )}
                     </div>
                     <div className='form-group w-50 m-auto'>
