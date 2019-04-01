@@ -9,6 +9,15 @@ import {
 } from '../actions/actionTypes';
 const initState = {
     cowsList: [],
+    pagination: {
+        count: '',
+        currentPage: '',
+        lastPage: '',
+        hasNextPage: '',
+        hasPreviousPage: '',
+        nextPage: '',
+        previousPage: '',
+    },
     checkout: [],
     ordersList: [],
     clientsList: [],
@@ -19,7 +28,16 @@ const projectReducer = (state = initState, action) => {
         case GET_PRODUCT_LIST:
             return {
                 ...state,
-                cowsList: action.payload,
+                cowsList: action.payload.data,
+                pagination: {
+                    count: action.payload.count,
+                    currentPage: action.payload.currentPage,
+                    lastPage: action.payload.lastPage,
+                    hasNextPage: action.payload.hasNextPage,
+                    hasPreviousPage: action.payload.hasPreviousPage,
+                    nextPage: action.payload.nextPage,
+                    previousPage: action.payload.previousPage,
+                },
             };
 
         case GET_CHECKOUT_LIST:

@@ -45,35 +45,63 @@ const upload = multer({
 
 //Get list of the products
 router.get('/get', (req, res) => {
-    const {ageFrom, ageTo, weightFrom, weightTo, location, breed} = req.query;
-    Product.findAll({
-        where: {
-            dateOfBirth: {
-                [Op.lt]: ageFrom || new Date().toISOString(),
-                [Op.gt]: ageTo || new Date(-8640000000000000),
+    const {
+        ageFrom,
+        ageTo,
+        weightFrom,
+        weightTo,
+        location,
+        breed,
+        pageNumber,
+    } = req.query;
+    let limit = 1; // number of records per page
+    let offset = 0;
+    Product.findAndCountAll().then(data => {
+        let currentPage = pageNumber ? +pageNumber : +1; // page number
+        let lastPage = Math.ceil(data.count / limit); // count how many lastPage will the app have
+        let hasNextPage = limit * currentPage < data.count;
+        let hasPreviousPage = currentPage > 1;
+        let nextPage = currentPage + 1;
+        let previousPage = currentPage - 1;
+        offset = limit * (currentPage - 1);
+        Product.findAll({
+            where: {
+                dateOfBirth: {
+                    [Op.lt]: ageFrom || new Date().toISOString(),
+                    [Op.gt]: ageTo || new Date(-8640000000000000),
+                },
+                weight: {
+                    [Op.between]: [
+                        weightFrom || 0,
+                        weightTo || Number.MAX_SAFE_INTEGER,
+                    ],
+                },
+                location: {
+                    [Op.like]: `${location || ''}%`,
+                },
+                breed: {
+                    [Op.like]: `%${breed || ''}%`,
+                },
             },
-            weight: {
-                [Op.between]: [
-                    weightFrom || 0,
-                    weightTo || Number.MAX_SAFE_INTEGER,
-                ],
-            },
-            location: {
-                [Op.like]: `${location || ''}%`,
-            },
-            breed: {
-                [Op.like]: `%${breed || ''}%`,
-            },
-        },
-    })
-        .then(products => {
-            res.json({
-                data: products,
-            });
+            limit,
+            offset,
         })
-        .catch(err => {
-            res.status(404).json(err);
-        });
+            .then(products => {
+                res.json({
+                    data: products,
+                    count: data.count,
+                    currentPage: currentPage,
+                    lastPage: lastPage,
+                    hasNextPage: hasNextPage,
+                    hasPreviousPage: hasPreviousPage,
+                    nextPage: nextPage,
+                    previousPage: previousPage,
+                });
+            })
+            .catch(err => {
+                res.status(404).json(err);
+            });
+    });
 });
 
 //Add a new product

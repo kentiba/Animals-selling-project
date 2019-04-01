@@ -1,3 +1,5 @@
+/* styling the form */
+
 #searchBar {
     float: left;
     margin-top: 1rem;
@@ -37,4 +39,21 @@ label {
 }
 .searchButton:hover {
     background-color: rgb(226, 230, 32);
+}
+
+/* styling pagination component */
+.pagination {
+    justify-content: center;
+}
+.pagination li {
+    cursor: pointer;
+    color: #00695c;
+    padding: 0.5rem;
+    border: 1px solid #00695c;
+    margin: 0 1rem;
+}
+.pagination li:hover,
+.pagination li:active {
+    background-color: #00695c;
+    color: white;
 }

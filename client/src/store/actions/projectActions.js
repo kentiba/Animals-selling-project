@@ -18,6 +18,7 @@ export const getProductList = (
     weightTo,
     location,
     breed,
+    pageNumber,
 ) => dispatch => {
     axios
         .get('/products/get', {
@@ -28,12 +29,23 @@ export const getProductList = (
                 weightTo,
                 location,
                 breed,
+                pageNumber,
             },
         })
         .then(res =>
+            // res => console.log(res),
             dispatch({
                 type: GET_PRODUCT_LIST,
-                payload: res.data.data,
+                payload: {
+                    data: res.data.data,
+                    count: res.data.count,
+                    currentPage: res.data.currentPage,
+                    lastPage: res.data.lastPage,
+                    hasNextPage: res.data.hasNextPage,
+                    hasPreviousPage: res.data.hasPreviousPage,
+                    nextPage: res.data.nextPage,
+                    previousPage: res.data.previousPage,
+                },
             }),
         )
         .catch(err =>
