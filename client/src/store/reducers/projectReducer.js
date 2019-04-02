@@ -17,6 +17,8 @@ const initState = {
         hasPreviousPage: '',
         nextPage: '',
         previousPage: '',
+        firstPageBox: '',
+        lastPageBox: '',
     },
     checkout: [],
     ordersList: [],
@@ -30,13 +32,14 @@ const projectReducer = (state = initState, action) => {
                 ...state,
                 cowsList: action.payload.data,
                 pagination: {
-                    count: action.payload.count,
                     currentPage: action.payload.currentPage,
                     lastPage: action.payload.lastPage,
                     hasNextPage: action.payload.hasNextPage,
                     hasPreviousPage: action.payload.hasPreviousPage,
                     nextPage: action.payload.nextPage,
                     previousPage: action.payload.previousPage,
+                    firstPageBox: action.payload.firstPageBox,
+                    lastPageBox: action.payload.lastPageBox,
                 },
             };
 

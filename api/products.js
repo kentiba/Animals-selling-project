@@ -57,12 +57,27 @@ router.get('/get', (req, res) => {
     let limit = 1; // number of records per page
     let offset = 0;
     Product.findAndCountAll().then(data => {
+        let firstPageBox;
+        let lastPageBox;
         let currentPage = pageNumber ? +pageNumber : +1; // page number
         let lastPage = Math.ceil(data.count / limit); // count how many lastPage will the app have
         let hasNextPage = limit * currentPage < data.count;
         let hasPreviousPage = currentPage > 1;
         let nextPage = currentPage + 1;
         let previousPage = currentPage - 1;
+        // condition rendering of the first page
+        if (currentPage !== 1 && previousPage !== 1) {
+            firstPageBox = true;
+        } else {
+            firstPageBox = false;
+        }
+        // condition rendering of the last page
+        if (currentPage !== lastPage && nextPage !== lastPage) {
+            lastPageBox = true;
+        } else {
+            lastPageBox = false;
+        }
+
         offset = limit * (currentPage - 1);
         Product.findAll({
             where: {
@@ -89,13 +104,14 @@ router.get('/get', (req, res) => {
             .then(products => {
                 res.json({
                     data: products,
-                    count: data.count,
                     currentPage: currentPage,
                     lastPage: lastPage,
                     hasNextPage: hasNextPage,
                     hasPreviousPage: hasPreviousPage,
                     nextPage: nextPage,
                     previousPage: previousPage,
+                    firstPageBox: firstPageBox,
+                    lastPageBox: lastPageBox,
                 });
             })
             .catch(err => {

@@ -38,13 +38,14 @@ export const getProductList = (
                 type: GET_PRODUCT_LIST,
                 payload: {
                     data: res.data.data,
-                    count: res.data.count,
                     currentPage: res.data.currentPage,
                     lastPage: res.data.lastPage,
                     hasNextPage: res.data.hasNextPage,
                     hasPreviousPage: res.data.hasPreviousPage,
                     nextPage: res.data.nextPage,
                     previousPage: res.data.previousPage,
+                    firstPageBox: res.data.firstPageBox,
+                    lastPageBox: res.data.lastPageBox,
                 },
             }),
         )

@@ -20,10 +20,6 @@ class SearchField extends Component {
         pageNumber: 1,
     };
 
-    // componentDidMount() {
-    //     this.props.getProductList();
-    // }
-
     handleChange = e => {
         this.setState({[e.target.id]: e.target.value});
     };
@@ -117,53 +113,32 @@ class SearchField extends Component {
             pageNumber,
         );
     };
-
-    firstPage = () => {
-        const {currentPage, previousPage} = this.props;
-        if (currentPage !== 1 && previousPage !== 1) {
-            return (
-                <li value={1} onClick={this.handleClick}>
-                    1
-                </li>
-            );
-        } else {
-            return null;
-        }
-    };
-    LastPage = () => {
-        const {lastPage, currentPage, nextPage} = this.props;
-        if (currentPage !== lastPage && nextPage !== lastPage) {
-            return (
-                <li value={lastPage} onClick={this.handleClick}>
-                    {lastPage}
-                </li>
-            );
-        } else {
-            return null;
-        }
-    };
     render() {
         console.log(this.props.pagination);
         const {
-            count,
             hasNextPage,
             hasPreviousPage,
             nextPage,
             currentPage,
             lastPage,
             previousPage,
+            lastPageBox,
+            firstPageBox,
         } = this.props.pagination;
 
         return (
             <div>
                 <ul className='pagination'>
-                    {this.firstPage()}
+                    {firstPageBox && (
+                        <li value={1} onClick={this.handleClick}>
+                            1
+                        </li>
+                    )}
                     {hasPreviousPage && (
                         <li value={previousPage} onClick={this.handleClick}>
                             {previousPage}
                         </li>
                     )}
-
                     <li value={currentPage} onClick={this.handleClick}>
                         {currentPage}
                     </li>
@@ -172,7 +147,11 @@ class SearchField extends Component {
                             {nextPage}
                         </li>
                     )}
-                    {this.LastPage()}
+                    {lastPageBox && (
+                        <li value={lastPage} onClick={this.handleClick}>
+                            {lastPage}
+                        </li>
+                    )}
                 </ul>
                 <form id='searchBar' onSubmit={this.handleSubmit}>
                     <div>
