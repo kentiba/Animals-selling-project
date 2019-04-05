@@ -5,7 +5,7 @@ const Client = require('../models/Clients');
 const nodemailer = require('nodemailer');
 const dayjs = require('dayjs');
 
-// age convertor
+// Age convertor
 const Age = dateOfBirth => {
     if (dayjs().diff(dateOfBirth, 'year') >= 1) {
         return dayjs().diff(dateOfBirth, 'year') + ' Years';
@@ -77,9 +77,6 @@ router.post('/', (req, res) => {
             user: 'temporaryEmail9921@gmail.com',
             pass: 'temporary_email',
         },
-        // tls: {
-        //     rejectUnaurhoeized: false,
-        // },
     });
 
     // setup email data with unicode symbols
@@ -112,7 +109,6 @@ router.post('/', (req, res) => {
                             breed: prod.breed,
                             location: prod.location,
                             description: prod.description,
-                            // clientId: cli.id,
                         }).catch(err => res.status(400).json(err));
                     });
                 })

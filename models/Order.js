@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const db = require('../config/db');
 
 module.exports = db.define('orders', {
-    //product info
+    //Product info of the order
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,

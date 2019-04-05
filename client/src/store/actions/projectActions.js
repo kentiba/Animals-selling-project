@@ -33,7 +33,6 @@ export const getProductList = (
             },
         })
         .then(res =>
-            // res => console.log(res),
             dispatch({
                 type: GET_PRODUCT_LIST,
                 payload: {
@@ -140,12 +139,6 @@ export const submitRequest = (info, history) => dispatch => {
             }),
         );
 };
-
-// export const resetCheckList = () => dispatch => {
-//     dispatch({
-//         type: RESET_CHECKOUT_LIST,
-//     });
-// };
 
 // to get the list of orders
 

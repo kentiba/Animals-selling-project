@@ -16,7 +16,7 @@
 h4,
 label {
     font-weight: bold;
-    padding-top: 3px;
+    padding-top: 2px;
 }
 
 .age,
@@ -44,6 +44,7 @@ label {
 /* styling pagination component */
 .pagination {
     justify-content: center;
+    width: 130vw;
 }
 .pagination li {
     cursor: pointer;

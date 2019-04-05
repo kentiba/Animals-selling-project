@@ -22,7 +22,6 @@ class App extends Component {
             <BrowserRouter>
                 <div className='App'>
                     <Navbar />
-                    {/*  using switch for every PrivateRoute to prevent redirect issues */}
                     <Switch>
                         <Route exact path='/' component={ProductList} />
                         <Route exact path='/about' component={About} />

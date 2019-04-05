@@ -5,7 +5,6 @@ module.exports = function validateRegisterInput(data) {
     let errors = {};
 
     //in order to validate anything , it has to be in string format
-    //might remove this later since we make sure in React that the user cant leave the form empty
     data.username = !isEmpty(data.username) ? data.username : '';
     data.email = !isEmpty(data.email) ? data.email : '';
     data.password = !isEmpty(data.password) ? data.password : '';
@@ -32,7 +31,7 @@ module.exports = function validateRegisterInput(data) {
     }
 
     if (!Validator.isLength(data.password, {min: 6, max: 30})) {
-        errors.password = 'Password must be atleast 6 characters';
+        errors.password = 'Password must be at least 6 characters';
     }
 
     if (Validator.isEmpty(data.password2)) {
