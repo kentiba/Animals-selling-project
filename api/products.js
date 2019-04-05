@@ -56,7 +56,26 @@ router.get('/get', (req, res) => {
     } = req.query;
     let limit = 1; // number of records per page
     let offset = 0;
-    Product.findAndCountAll().then(data => {
+    Product.findAndCountAll({
+        where: {
+            dateOfBirth: {
+                [Op.lt]: ageFrom || new Date().toISOString(),
+                [Op.gt]: ageTo || new Date(-8640000000000000),
+            },
+            weight: {
+                [Op.between]: [
+                    weightFrom || 0,
+                    weightTo || Number.MAX_SAFE_INTEGER,
+                ],
+            },
+            location: {
+                [Op.like]: `${location || ''}%`,
+            },
+            breed: {
+                [Op.like]: `%${breed || ''}%`,
+            },
+        },
+    }).then(data => {
         let firstPageBox;
         let lastPageBox;
         let currentPage = pageNumber ? +pageNumber : +1; // page number

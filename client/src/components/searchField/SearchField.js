@@ -114,7 +114,6 @@ class SearchField extends Component {
         );
     };
     render() {
-        console.log(this.props.pagination);
         const {
             hasNextPage,
             hasPreviousPage,
@@ -125,34 +124,38 @@ class SearchField extends Component {
             lastPageBox,
             firstPageBox,
         } = this.props.pagination;
+        console.log(this.props.products);
 
         return (
             <div>
-                <ul className='pagination'>
-                    {firstPageBox && (
-                        <li value={1} onClick={this.handleClick}>
-                            1
+                {this.props.products.length > 0 && (
+                    <ul className='pagination'>
+                        {firstPageBox && (
+                            <li value={1} onClick={this.handleClick}>
+                                1
+                            </li>
+                        )}
+                        {hasPreviousPage && (
+                            <li value={previousPage} onClick={this.handleClick}>
+                                {previousPage}
+                            </li>
+                        )}
+                        <li value={currentPage} onClick={this.handleClick}>
+                            {currentPage}
                         </li>
-                    )}
-                    {hasPreviousPage && (
-                        <li value={previousPage} onClick={this.handleClick}>
-                            {previousPage}
-                        </li>
-                    )}
-                    <li value={currentPage} onClick={this.handleClick}>
-                        {currentPage}
-                    </li>
-                    {hasNextPage && (
-                        <li value={nextPage} onClick={this.handleClick}>
-                            {nextPage}
-                        </li>
-                    )}
-                    {lastPageBox && (
-                        <li value={lastPage} onClick={this.handleClick}>
-                            {lastPage}
-                        </li>
-                    )}
-                </ul>
+                        {hasNextPage && (
+                            <li value={nextPage} onClick={this.handleClick}>
+                                {nextPage}
+                            </li>
+                        )}
+                        {lastPageBox && (
+                            <li value={lastPage} onClick={this.handleClick}>
+                                {lastPage}
+                            </li>
+                        )}
+                    </ul>
+                )}
+
                 <form id='searchBar' onSubmit={this.handleSubmit}>
                     <div>
                         <h4>Age</h4>
@@ -267,6 +270,7 @@ class SearchField extends Component {
 const mapStateToProps = state => {
     return {
         pagination: state.project.pagination,
+        products: state.project.cowsList,
     };
 };
 
