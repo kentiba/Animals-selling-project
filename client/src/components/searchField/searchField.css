@@ -1,15 +1,18 @@
 /* styling the form */
-
-#searchBar {
-    float: left;
+.search-component {
+    display: flex;
+    flex-direction: column;
     margin-top: 1rem;
-    margin-left: 3rem;
-    width: 30vw;
+}
+#searchBar {
+    width: 70%;
     display: flex;
     flex-direction: column;
     text-align: center;
+    margin: auto;
     background-color: rgb(140, 250, 186);
     border-radius: 5%;
+    order: 2;
 }
 
 #searchBar p,
@@ -44,7 +47,7 @@ label {
 /* styling pagination component */
 .pagination {
     justify-content: center;
-    width: 130vw;
+    order: 1;
 }
 .pagination li {
     cursor: pointer;
@@ -57,4 +60,18 @@ label {
 .pagination li:active {
     background-color: #00695c;
     color: white;
+}
+
+/* Media query*/
+@media only screen and (max-width: 991px) {
+    .pagination {
+        width: 100%;
+        margin-top: 2rem;
+        order: 2;
+    }
+    #searchBar {
+        width: 70%;
+        margin-top: 1rem;
+        order: 1;
+    }
 }

@@ -4,7 +4,8 @@ const isEmpty = require('./is-empty');
 module.exports = function validateLoginInput(data) {
     let errors = {};
 
-    //in order to validate anything , it has to be in string format
+    //in order to validate anything using Validator library , it has to be in string format
+
     data.email = !isEmpty(data.email) ? data.email : '';
     data.password = !isEmpty(data.password) ? data.password : '';
 

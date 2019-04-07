@@ -3,6 +3,7 @@
     width: 16rem;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
+    margin: 4.5rem 1rem 1.5rem 1rem;
 }
 
 .product:hover {
@@ -41,4 +42,11 @@
     padding: 10px;
     border: 1px solid black;
     border-radius: 16px;
+}
+
+/* Media query*/
+@media only screen and (max-width: 991px) {
+    .product {
+        margin-top: 0rem;
+    }
 }

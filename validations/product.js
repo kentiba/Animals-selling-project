@@ -1,12 +1,10 @@
+const Validator = require('validator');
 const isEmpty = require('./is-empty');
 
 module.exports = function validateProductInput(data) {
     let errors = {};
 
-    IsNumeric = input => {
-        var RE = /^-{0,1}\d*\.{0,1}\d+$/;
-        return RE.test(input);
-    };
+    //in order to validate anything using Validator library , it has to be in string format
 
     data.dateOfBirth = !isEmpty(data.dateOfBirth) ? data.dateOfBirth : '';
     data.weight = !isEmpty(data.weight) ? data.weight : '';
@@ -17,7 +15,7 @@ module.exports = function validateProductInput(data) {
     if (isEmpty(data.dateOfBirth)) {
         errors.dateOfBirth = 'Date of birth field is required';
     }
-    if (!IsNumeric(data.weight)) {
+    if (!Validator.isNumeric(data.weight)) {
         errors.weight = 'Weight field must be a number';
     }
     if (isEmpty(data.weight)) {

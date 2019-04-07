@@ -30,7 +30,7 @@ class Orders extends Component {
             <div className='py-5 m-3'>
                 <div className='text-center'>
                     <div className='text-left'>
-                        <Link to={'/orders'} className='btn btn-info '>
+                        <Link to={'/orders'} className='btn btn-info m-2'>
                             Back to clients
                         </Link>
                     </div>

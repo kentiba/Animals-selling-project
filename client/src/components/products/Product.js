@@ -39,7 +39,7 @@ class Product extends Component {
         const {id, weight, dateOfBirth, sex, breed, image} = this.props.cow;
         return (
             <div>
-                <div className='card product text-center p-3 m-3'>
+                <div className='card product text-center p-2'>
                     {/* id cant be just a number so I added a letter before the id number */}
                     <div data-toggle='modal' data-target={'#A' + id}>
                         <img

@@ -22,20 +22,26 @@ class ProductList extends Component {
             return <Product key={index} cow={product} />;
         });
         return (
-            <div className='py-5 mt-3'>
-                <SearchField />
-                <div className='row justify-content-center'>
-                    {renderProducts.length !== 0 ? (
-                        renderProducts
-                    ) : (
-                        <div className='no-products'>
-                            <h1>
-                                There are no products matching your requst.
-                                Please refresh the page or change your search
-                                parameters
-                            </h1>
+            <div className='container-fluid'>
+                <div className='row py-5 mt-3'>
+                    <div className=' col-md-12 col-lg-4'>
+                        <SearchField />
+                    </div>
+                    <div className='col-md-12 col-lg-8'>
+                        <div className='row justify-content-center mt-2'>
+                            {renderProducts.length !== 0 ? (
+                                renderProducts
+                            ) : (
+                                <div className='no-products'>
+                                    <h1>
+                                        There are no products matching your
+                                        requst. Please refresh the page or
+                                        change your search parameters
+                                    </h1>
+                                </div>
+                            )}
                         </div>
-                    )}
+                    </div>
                 </div>
             </div>
         );

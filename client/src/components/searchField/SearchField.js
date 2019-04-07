@@ -124,10 +124,9 @@ class SearchField extends Component {
             lastPageBox,
             firstPageBox,
         } = this.props.pagination;
-        console.log(this.props.products);
 
         return (
-            <div>
+            <div className='search-component'>
                 {this.props.products.length > 0 && (
                     <ul className='pagination'>
                         {firstPageBox && (
