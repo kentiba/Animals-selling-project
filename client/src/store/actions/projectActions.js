@@ -1,4 +1,5 @@
 import {
+    SUBMIT_REQUEST,
     GET_PRODUCT_LIST,
     ADD_TO_CART,
     GET_CHECKOUT_LIST,
@@ -6,6 +7,7 @@ import {
     GET_ERRORS,
     GET_ORDERS_LIST,
     GET_CLIENTS_LIST,
+    POST_LOADING,
 } from './actionTypes';
 import axios from 'axios';
 
@@ -126,9 +128,13 @@ export const removeProduct = id => dispatch => {
 //to remove all the products from the checkoutlist after submitting the order
 
 export const submitRequest = (info, history) => dispatch => {
+    dispatch(setPostLoading());
     axios
         .post('/orders', info)
         .then(() => {
+            dispatch({
+                type: SUBMIT_REQUEST,
+            });
             history.push('/sent');
             window.location.reload(true);
         })
@@ -176,4 +182,11 @@ export const getClientsList = () => dispatch => {
                 payload: err.response.data,
             }),
         );
+};
+
+// Set loading state
+export const setPostLoading = () => {
+    return {
+        type: POST_LOADING,
+    };
 };

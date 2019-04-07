@@ -5,7 +5,8 @@ import {
     REMOVE_PRODUCT,
     GET_ORDERS_LIST,
     GET_CLIENTS_LIST,
-    // RESET_CHECKOUT_LIST,
+    POST_LOADING,
+    SUBMIT_REQUEST,
 } from '../actions/actionTypes';
 const initState = {
     cowsList: [],
@@ -23,10 +24,23 @@ const initState = {
     checkout: [],
     ordersList: [],
     clientsList: [],
+    loading: false,
 };
 
 const projectReducer = (state = initState, action) => {
     switch (action.type) {
+        case POST_LOADING: {
+            return {
+                ...state,
+                loading: true,
+            };
+        }
+        case SUBMIT_REQUEST: {
+            return {
+                ...state,
+                loading: false,
+            };
+        }
         case GET_PRODUCT_LIST:
             return {
                 ...state,

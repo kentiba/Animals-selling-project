@@ -5,7 +5,7 @@ const Client = require('../models/Clients');
 const nodemailer = require('nodemailer');
 const dayjs = require('dayjs');
 
-// Age convertor
+//Age convertor. Converts date of birth to age
 const Age = dateOfBirth => {
     if (dayjs().diff(dateOfBirth, 'year') >= 1) {
         return dayjs().diff(dateOfBirth, 'year') + ' Years';

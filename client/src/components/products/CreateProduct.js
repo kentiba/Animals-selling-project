@@ -46,9 +46,9 @@ class CreateProduct extends Component {
         weight.length !== 0 &&
             fd.append('weight', (weight * 1000).toString().trim());
         sex.length !== 0 && fd.append('sex', sex);
-        location.length !== 0 && fd.append('location', location);
-        breed.length !== 0 && fd.append('breed', breed);
-        fd.append('description', description);
+        location.length !== 0 && fd.append('location', location.trim());
+        breed.length !== 0 && fd.append('breed', breed.trim());
+        fd.append('description', description.trim());
         fd.append('image', image);
 
         this.props.createProduct(fd, this.props.history);

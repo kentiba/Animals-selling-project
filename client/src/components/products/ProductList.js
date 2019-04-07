@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import Product from './Product';
 import {connect} from 'react-redux';
 import {getProductList} from '../../store/actions/projectActions';
-import Loading from '../../assets/loading.gif';
 import SearchField from '../searchField/SearchField';
 
 class ProductList extends Component {
@@ -29,7 +28,13 @@ class ProductList extends Component {
                     {renderProducts.length !== 0 ? (
                         renderProducts
                     ) : (
-                        <img src={Loading} alt='loading' />
+                        <div className='no-products'>
+                            <h1>
+                                There are no products matching your requst.
+                                Please refresh the page or change your search
+                                parameters
+                            </h1>
+                        </div>
                     )}
                 </div>
             </div>

@@ -17,7 +17,6 @@ class Checkout extends Component {
         email: '',
         phone: '',
         note: '',
-        spinner: false,
     };
 
     componentDidMount() {
@@ -36,17 +35,14 @@ class Checkout extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        this.setState({spinner: true});
         const info = [this.state, this.props.checkoutList];
         this.props.submitRequest(info, this.props.history);
     };
 
     //for the spinner
     toggleSpinner = () => {
-        if (
-            this.state.spinner === true &&
-            Object.keys(this.props.errors).length === 0
-        ) {
+        const {loading, errors} = this.props;
+        if (loading === true && Object.keys(errors).length === 0) {
             return (
                 <div>
                     <img
@@ -200,6 +196,7 @@ class Checkout extends Component {
 const mapStateToProps = state => {
     return {
         checkoutList: state.project.checkout,
+        loading: state.project.loading,
         errors: state.errors,
     };
 };
