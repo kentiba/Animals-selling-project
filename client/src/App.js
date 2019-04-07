@@ -15,6 +15,7 @@ import OrderSubmitted from './components/checkout/OrderSubmitted ';
 import Clients from './components/ordersLog/Clients';
 import Orders from './components/ordersLog/Orders';
 import NotFound from './components/common/NotFound';
+import Footer from './components/layout/Footer';
 
 class App extends Component {
     render() {
@@ -57,6 +58,7 @@ class App extends Component {
                         {/* for all unmatched routes */}
                         <Route path='*' exact component={NotFound} />
                     </Switch>
+                    <Footer />
                 </div>
             </BrowserRouter>
         );
