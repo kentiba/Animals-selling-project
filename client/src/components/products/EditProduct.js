@@ -265,8 +265,8 @@ class EditProject extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     const id = ownProps.match.params.id;
-    const project = state.project.cowsList.find(cow => {
-        return cow.id.toString() === id;
+    const project = state.project.productsList.find(product => {
+        return product.id.toString() === id;
     });
 
     return {

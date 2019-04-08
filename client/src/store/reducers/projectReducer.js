@@ -9,7 +9,7 @@ import {
     SUBMIT_REQUEST,
 } from '../actions/actionTypes';
 const initState = {
-    cowsList: [],
+    productsList: [],
     pagination: {
         count: '',
         currentPage: '',
@@ -44,7 +44,7 @@ const projectReducer = (state = initState, action) => {
         case GET_PRODUCT_LIST:
             return {
                 ...state,
-                cowsList: action.payload.data,
+                productsList: action.payload.data,
                 pagination: {
                     currentPage: action.payload.currentPage,
                     lastPage: action.payload.lastPage,

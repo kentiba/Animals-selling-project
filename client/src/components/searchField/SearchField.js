@@ -269,7 +269,7 @@ class SearchField extends Component {
 const mapStateToProps = state => {
     return {
         pagination: state.project.pagination,
-        products: state.project.cowsList,
+        products: state.project.productsList,
     };
 };
 

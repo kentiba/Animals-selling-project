@@ -10,7 +10,7 @@ class ProductList extends Component {
     };
     componentWillReceiveProps(nextProps) {
         this.setState({
-            products: nextProps.cows,
+            products: nextProps.products,
         });
     }
     componentDidMount() {
@@ -19,7 +19,7 @@ class ProductList extends Component {
     render() {
         const {products} = this.state;
         const renderProducts = products.map((product, index) => {
-            return <Product key={index} cow={product} />;
+            return <Product key={index} products={product} />;
         });
         return (
             <div className='container-fluid'>
@@ -50,7 +50,7 @@ class ProductList extends Component {
 
 const mapStateToProps = state => {
     return {
-        cows: state.project.cowsList,
+        products: state.project.productsList,
     };
 };
 const mapDispatchToProps = dispatch => {

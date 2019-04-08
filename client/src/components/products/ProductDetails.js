@@ -11,8 +11,8 @@ import dayjs from 'dayjs';
 class ProductDeatils extends Component {
     handleClick = e => {
         e.preventDefault();
-        const {cow, addToCart, checkout} = this.props;
-        if (checkout.find(prod => prod.id === cow.id)) {
+        const {products, addToCart, checkout} = this.props;
+        if (checkout.find(prod => prod.id === products.id)) {
             confirmAlert({
                 customUI: ({onClose}) => {
                     return (
@@ -32,7 +32,7 @@ class ProductDeatils extends Component {
                 },
             });
         } else {
-            addToCart(cow);
+            addToCart(products);
         }
     };
     render() {
@@ -46,7 +46,7 @@ class ProductDeatils extends Component {
             description,
             image,
             created,
-        } = this.props.cow;
+        } = this.props.products;
 
         return (
             <div

@@ -11,8 +11,8 @@ import AgeConvertor from '../common/AgeConvertor';
 class Product extends Component {
     handleClick = e => {
         e.preventDefault();
-        const {cow, addToCart, checkout} = this.props;
-        if (checkout.find(prod => prod.id === cow.id)) {
+        const {products, addToCart, checkout} = this.props;
+        if (checkout.find(prod => prod.id === products.id)) {
             confirmAlert({
                 customUI: ({onClose}) => {
                     return (
@@ -32,11 +32,18 @@ class Product extends Component {
                 },
             });
         } else {
-            addToCart(cow);
+            addToCart(products);
         }
     };
     render() {
-        const {id, weight, dateOfBirth, sex, breed, image} = this.props.cow;
+        const {
+            id,
+            weight,
+            dateOfBirth,
+            sex,
+            breed,
+            image,
+        } = this.props.products;
         return (
             <div>
                 <div className='card product text-center p-2'>
@@ -78,7 +85,7 @@ class Product extends Component {
                 </div>
 
                 {/* modal */}
-                <ProductDeatils cow={this.props.cow} />
+                <ProductDeatils products={this.props.products} />
             </div>
         );
     }
