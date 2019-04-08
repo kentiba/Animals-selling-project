@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {getOrdersList} from '../../store/actions/projectActions';
-import './order.css';
 import dayjs from 'dayjs';
+import './order.css';
 class Orders extends Component {
     componentDidMount() {
         this.props.getOrdersList();
@@ -11,7 +11,6 @@ class Orders extends Component {
 
     render() {
         const {ordersList, errors} = this.props;
-
         const renderList = ordersList.map(order => {
             return (
                 <tr key={order.id} className='order'>

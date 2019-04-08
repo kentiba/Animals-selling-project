@@ -1,15 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import {createStore, applyMiddleware, compose} from 'redux';
-import rootReducer from '../src/store/reducers/rootReducer';
-import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
-import * as serviceWorker from './serviceWorker';
+import {createStore, applyMiddleware, compose} from 'redux';
+import App from './App';
+import rootReducer from '../src/store/reducers/rootReducer';
+import {setCurrentUser, logoutUser} from './store/actions/userAction';
+import {Provider} from 'react-redux';
 import jwt_decode from 'jwt-decode';
 import setAuthToken from './utils/setAuthToken';
-import {setCurrentUser, logoutUser} from './store/actions/userAction';
+import * as serviceWorker from './serviceWorker';
 
+//create store and connect redux to redux-devtools
 const store = createStore(
     rootReducer,
     compose(
@@ -34,7 +35,6 @@ if (localStorage.jwtToken) {
     if (decode.exp < currentTime) {
         //logout user
         store.dispatch(logoutUser());
-        //TODO clear current Profile
 
         // Redirect to login
         window.location.href = '/';

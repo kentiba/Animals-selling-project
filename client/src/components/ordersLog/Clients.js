@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {getClientsList} from '../../store/actions/projectActions';
-import './order.css';
 import daysjs from 'dayjs';
+import './order.css';
 class Clients extends Component {
     componentDidMount() {
         this.props.getClientsList();

@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import './product.css';
 import {connect} from 'react-redux';
 import {addToCart} from '../../store/actions/projectActions';
 import {confirmAlert} from 'react-confirm-alert';
-import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import defaultImage from '../../assets/default.png';
 import AgeConvertor from '../common/AgeConvertor';
 import dayjs from 'dayjs';
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+import './product.css';
 
 class ProductDeatils extends Component {
     handleClick = e => {
@@ -60,7 +60,7 @@ class ProductDeatils extends Component {
                     className='modal-dialog text-center productDetail'
                     role='document'
                 >
-                    <div className='modal-content '>
+                    <div className='modal-content'>
                         <img
                             className='card-img-top'
                             src={image ? image : defaultImage}

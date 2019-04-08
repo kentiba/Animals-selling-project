@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
-import './product.css';
 import ProductDeatils from './ProductDetails';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {addToCart} from '../../store/actions/projectActions';
 import {confirmAlert} from 'react-confirm-alert';
-import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import defaultImage from '../../assets/default.png';
 import AgeConvertor from '../common/AgeConvertor';
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+import './product.css';
+
 class Product extends Component {
     handleClick = e => {
         e.preventDefault();

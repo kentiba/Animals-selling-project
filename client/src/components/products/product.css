@@ -21,15 +21,14 @@
     margin-top: 20vh;
     width: 80%;
 }
-/* styling productDetails component */
 
+/* styling productDetails component */
 .productDetail img {
     min-height: 26rem;
     max-height: 26rem;
 }
 
 /* styling editProject */
-
 .editProject img {
     width: 50%;
     height: 20rem;

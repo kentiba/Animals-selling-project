@@ -38,7 +38,7 @@ const fileFilter = (req, file, cb) => {
 const upload = multer({
     storage: storage,
     limits: {
-        fileSize: 1024 * 1024 * 7,
+        fileSize: 1024 * 1024 * 7, //7mb
     },
     fileFilter: fileFilter,
 }).single('image');
@@ -76,6 +76,7 @@ router.get('/get', (req, res) => {
             },
         },
     }).then(data => {
+        //Pagination logic
         let firstPageBox;
         let lastPageBox;
         let currentPage = pageNumber ? +pageNumber : +1; // page number

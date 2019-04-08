@@ -1,9 +1,10 @@
-/* style checkout components */
+/* style  for checkout components */
 .checkout td {
     vertical-align: middle;
 }
 
-/* Style ordered components */
+/* Style  for ordered components */
 .orderSubmitted {
     margin-top: 8rem;
+    margin-bottom: 2rem;
 }

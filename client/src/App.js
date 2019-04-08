@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import './App.css';
-import Navbar from './components/layout/Navbar';
-import ProductList from './components/products/ProductList';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
+import ProductList from './components/products/ProductList';
 import About from './components/About';
 import Checkout from './components/checkout/Checkout';
 import Contact from './components/Contact';
@@ -10,12 +10,12 @@ import EditProduct from './components/products/EditProduct';
 import CreateProduct from './components/products/CreateProduct';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
-import PrivateRoute from './components/common/PrivateRoute';
 import OrderSubmitted from './components/checkout/OrderSubmitted ';
 import Clients from './components/ordersLog/Clients';
 import Orders from './components/ordersLog/Orders';
 import NotFound from './components/common/NotFound';
-import Footer from './components/layout/Footer';
+import PrivateRoute from './components/common/PrivateRoute';
+import './App.css';
 
 class App extends Component {
     render() {

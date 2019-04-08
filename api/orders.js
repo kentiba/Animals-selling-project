@@ -21,6 +21,7 @@ router.post('/', (req, res) => {
     const {name, phone, note, email} = req.body[0];
     const product = req.body[1];
     const productList = product.map(pro => {
+        //convert weight from grams to kg
         const weight = pro.weight / 1000;
         return `<tr>
                 <td style="text-align: center; padding : 3px; border-bottom: 1px solid #ddd;">${
@@ -71,6 +72,7 @@ router.post('/', (req, res) => {
     `;
 
     // create reusable transporter object using the default SMTP transport
+    //using a disposable email currently. Chnage later to the actual address
     let transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
         auth: {

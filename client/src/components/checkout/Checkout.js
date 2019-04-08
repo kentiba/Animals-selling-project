@@ -8,8 +8,8 @@ import {
 } from '../../store/actions/projectActions';
 import defaultImage from '../../assets/default.png';
 import Spinner from '../../assets/loading.gif';
-import './checkout.css';
 import AgeConvertor from '../common/AgeConvertor';
+import './checkout.css';
 
 class Checkout extends Component {
     state = {

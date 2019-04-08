@@ -147,7 +147,6 @@ export const submitRequest = (info, history) => dispatch => {
 };
 
 // to get the list of orders
-
 export const getOrdersList = () => dispatch => {
     axios
         .get('/orders')
@@ -166,7 +165,6 @@ export const getOrdersList = () => dispatch => {
 };
 
 // to get the list of clients
-
 export const getClientsList = () => dispatch => {
     axios
         .get('/clients')

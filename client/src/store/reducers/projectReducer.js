@@ -75,11 +75,6 @@ const projectReducer = (state = initState, action) => {
                     return product.id !== action.payload;
                 }),
             };
-        // case RESET_CHECKOUT_LIST:
-        //     return {
-        //         ...state,
-        //         checkout: [],
-        //     };
 
         case GET_ORDERS_LIST:
             return {

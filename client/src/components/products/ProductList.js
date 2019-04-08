@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import Product from './Product';
 import {connect} from 'react-redux';
+import Product from './Product';
 import {getProductList} from '../../store/actions/projectActions';
 import SearchField from '../searchField/SearchField';
 

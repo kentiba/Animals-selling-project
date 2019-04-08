@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const db = require('./config/db');
+
+//setting port
 const port = process.env.PORT || 4000;
 
 //import models
