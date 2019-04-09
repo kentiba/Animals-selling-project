@@ -53,7 +53,7 @@ class Product extends Component {
                         <img
                             className='card-img-top'
                             src={image ? image : defaultImage}
-                            alt='Card cap'
+                            alt='ProductImage'
                         />
                         <ul className='list-group list-group-flush'>
                             <li className='list-group-item'>Breed: {breed}</li>

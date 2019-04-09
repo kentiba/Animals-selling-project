@@ -73,7 +73,7 @@ class Checkout extends Component {
                     <td>
                         <img
                             src={item.image ? item.image : defaultImage}
-                            alt='productPicture'
+                            alt='ProductImage'
                             width={75}
                             height={75}
                         />

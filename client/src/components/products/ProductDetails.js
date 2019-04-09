@@ -64,7 +64,7 @@ class ProductDeatils extends Component {
                         <img
                             className='card-img-top'
                             src={image ? image : defaultImage}
-                            alt='Card cap'
+                            alt='ProductImage'
                         />
 
                         <div className='modal-body'>
