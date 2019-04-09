@@ -24,7 +24,7 @@ class ProductList extends Component {
         return (
             <div className='container-fluid'>
                 <div className='row py-5 mt-3'>
-                    <div className=' col-md-12 col-lg-4'>
+                    <div className='col-md-12 col-lg-4'>
                         <SearchField />
                     </div>
                     <div className='col-md-12 col-lg-8'>

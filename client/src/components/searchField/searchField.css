@@ -10,7 +10,7 @@
     flex-direction: column;
     text-align: center;
     margin: auto;
-    background-color: rgb(140, 250, 186);
+    background-color: rgb(150, 224, 245);
     border-radius: 5%;
     order: 2;
 }
@@ -38,10 +38,10 @@ label {
     min-width: 0px;
 }
 .searchButton {
-    background-color: rgb(251, 255, 29);
+    background-color: rgb(78, 255, 231);
 }
 .searchButton:hover {
-    background-color: rgb(226, 230, 32);
+    background-color: rgb(77, 182, 185);
 }
 
 /* styling pagination component */
