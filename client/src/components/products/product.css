@@ -3,7 +3,7 @@
     width: 16rem;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
-    margin: 4.5rem 1rem 1.5rem 1rem;
+    margin: 1rem 1rem 1.5rem 1rem;
 }
 
 .product:hover {
@@ -43,9 +43,31 @@
     border-radius: 16px;
 }
 
+/* Styling productList */
+.paginationBar {
+    order: 1;
+}
+.searchBar {
+    order: 2;
+}
+.productCards {
+    order: 3;
+}
+
 /* Media query*/
 @media only screen and (max-width: 991px) {
     .product {
         margin-top: 0rem;
+    }
+
+    .paginationBar {
+        margin: 1rem 0;
+        order: 2;
+    }
+    .searchBar {
+        order: 1;
+    }
+    .productCards {
+        order: 3;
     }
 }

@@ -47,6 +47,12 @@ export const getProductList = (
                     previousPage: res.data.previousPage,
                     firstPageBox: res.data.firstPageBox,
                     lastPageBox: res.data.lastPageBox,
+                    ageFrom: res.data.ageFrom,
+                    ageTo: res.data.ageTo,
+                    weightFrom: res.data.weightFrom,
+                    weightTo: res.data.weightTo,
+                    location: res.data.location,
+                    breed: res.data.breed,
                 },
             }),
         )

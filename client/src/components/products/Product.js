@@ -71,7 +71,7 @@ class Product extends Component {
         } = this.props.products;
         return (
             <div>
-                <div className='card product text-center p-2'>
+                <div className='card product text-center'>
                     {/* id cant be just a number so I added a letter before the id number */}
                     <div data-toggle='modal' data-target={'#A' + id}>
                         <img
@@ -91,12 +91,6 @@ class Product extends Component {
                         </ul>
                     </div>
                     <div className='card-body'>
-                        {/* <button
-                            className='btn btn-outline-success mb-3'
-                            onClick={this.handleClick}
-                        >
-                            Add to Cart
-                        </button> */}
                         {this.cartButton(id)}
                         <br />
                         {this.props.user.isAuthenticated && (

@@ -128,14 +128,6 @@ class ProductDeatils extends Component {
                             >
                                 Close
                             </button>
-                            {/* <button
-                                type='button'
-                                className='btn btn-outline-success'
-                                onClick={this.handleClick}
-                                data-dismiss='modal'
-                            >
-                                Add to Cart
-                            </button> */}
                             {this.cartButton(id)}
                         </div>
                     </div>

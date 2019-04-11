@@ -54,7 +54,7 @@ router.get('/get', (req, res) => {
         breed,
         pageNumber,
     } = req.query;
-    let limit = 2; // number of products per page
+    let limit = 3; // number of products per page
     let offset = 0;
     Product.findAndCountAll({
         where: {
@@ -131,6 +131,12 @@ router.get('/get', (req, res) => {
                     previousPage: previousPage,
                     firstPageBox: firstPageBox,
                     lastPageBox: lastPageBox,
+                    ageFrom: ageFrom,
+                    ageTo: ageTo,
+                    weightFrom: weightFrom,
+                    weightTo: weightTo,
+                    location: location,
+                    breed: breed,
                 });
             })
             .catch(err => {

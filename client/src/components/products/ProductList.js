@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import Product from './Product';
 import {getProductList} from '../../store/actions/projectActions';
 import SearchField from '../searchField/SearchField';
+import Pagination from '../pagination/Pagination';
+import './product.css';
 
 const initialStateProducts = [];
 
@@ -30,11 +32,14 @@ class ProductList extends Component {
         return (
             <div className='container-fluid'>
                 <div className='row py-5 mt-3'>
-                    <div className='col-md-12 col-lg-4'>
+                    <div className='col-md-12 paginationBar'>
+                        <Pagination />
+                    </div>
+                    <div className='col-md-12 col-lg-4 searchBar'>
                         <SearchField />
                     </div>
-                    <div className='col-md-12 col-lg-8'>
-                        <div className='row justify-content-center mt-2'>
+                    <div className='col-md-12 col-lg-8 productCards'>
+                        <div className='row justify-content-center'>
                             {renderProducts.length !== 0 ? (
                                 renderProducts
                             ) : (
