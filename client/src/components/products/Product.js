@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import ProductDeatils from './ProductDetails';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {addToCart} from '../../store/actions/projectActions';
+import {addToCart, removeProduct} from '../../store/actions/projectActions';
 import {confirmAlert} from 'react-confirm-alert';
 import defaultImage from '../../assets/default.png';
 import AgeConvertor from '../common/AgeConvertor';
@@ -13,6 +13,7 @@ class Product extends Component {
     handleClick = e => {
         e.preventDefault();
         const {products, addToCart, checkout} = this.props;
+        //Might remove this since the client can never add a product twice
         if (checkout.find(prod => prod.id === products.id)) {
             confirmAlert({
                 customUI: ({onClose}) => {
@@ -34,6 +35,29 @@ class Product extends Component {
             });
         } else {
             addToCart(products);
+        }
+    };
+
+    cartButton = id => {
+        const {checkout, removeProduct} = this.props;
+        if (checkout.find(product => product.id === id)) {
+            return (
+                <button
+                    className='btn btn-outline-danger mb-3'
+                    onClick={() => removeProduct(id)}
+                >
+                    Remove from Cart
+                </button>
+            );
+        } else {
+            return (
+                <button
+                    className='btn btn-outline-success mb-3'
+                    onClick={this.handleClick}
+                >
+                    Add to Cart
+                </button>
+            );
         }
     };
     render() {
@@ -67,12 +91,13 @@ class Product extends Component {
                         </ul>
                     </div>
                     <div className='card-body'>
-                        <button
+                        {/* <button
                             className='btn btn-outline-success mb-3'
                             onClick={this.handleClick}
                         >
                             Add to Cart
-                        </button>
+                        </button> */}
+                        {this.cartButton(id)}
                         <br />
                         {this.props.user.isAuthenticated && (
                             <Link
@@ -102,6 +127,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         addToCart: product => dispatch(addToCart(product)),
+        removeProduct: id => dispatch(removeProduct(id)),
     };
 };
 

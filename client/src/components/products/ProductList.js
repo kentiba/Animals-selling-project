@@ -4,9 +4,11 @@ import Product from './Product';
 import {getProductList} from '../../store/actions/projectActions';
 import SearchField from '../searchField/SearchField';
 
+const initialStateProducts = [];
+
 class ProductList extends Component {
     state = {
-        products: [],
+        products: initialStateProducts,
     };
     componentWillReceiveProps(nextProps) {
         this.setState({
@@ -18,6 +20,10 @@ class ProductList extends Component {
     }
     render() {
         const {products} = this.state;
+        if (products === initialStateProducts) {
+            return null;
+        }
+
         const renderProducts = products.map((product, index) => {
             return <Product key={index} products={product} />;
         });

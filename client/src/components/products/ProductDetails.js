@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {addToCart} from '../../store/actions/projectActions';
+import {addToCart, removeProduct} from '../../store/actions/projectActions';
 import {confirmAlert} from 'react-confirm-alert';
 import defaultImage from '../../assets/default.png';
 import AgeConvertor from '../common/AgeConvertor';
@@ -12,6 +12,7 @@ class ProductDeatils extends Component {
     handleClick = e => {
         e.preventDefault();
         const {products, addToCart, checkout} = this.props;
+        //Might remove this since the client can never add a product twice
         if (checkout.find(prod => prod.id === products.id)) {
             confirmAlert({
                 customUI: ({onClose}) => {
@@ -33,6 +34,31 @@ class ProductDeatils extends Component {
             });
         } else {
             addToCart(products);
+        }
+    };
+
+    cartButton = id => {
+        const {checkout, removeProduct} = this.props;
+        if (checkout.find(product => product.id === id)) {
+            return (
+                <button
+                    className='btn btn-outline-danger'
+                    onClick={() => removeProduct(id)}
+                    data-dismiss='modal'
+                >
+                    Remove from Cart
+                </button>
+            );
+        } else {
+            return (
+                <button
+                    className='btn btn-outline-success'
+                    onClick={this.handleClick}
+                    data-dismiss='modal'
+                >
+                    Add to Cart
+                </button>
+            );
         }
     };
     render() {
@@ -102,14 +128,15 @@ class ProductDeatils extends Component {
                             >
                                 Close
                             </button>
-                            <button
+                            {/* <button
                                 type='button'
                                 className='btn btn-outline-success'
                                 onClick={this.handleClick}
                                 data-dismiss='modal'
                             >
                                 Add to Cart
-                            </button>
+                            </button> */}
+                            {this.cartButton(id)}
                         </div>
                     </div>
                 </div>
@@ -128,6 +155,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         addToCart: product => dispatch(addToCart(product)),
+        removeProduct: id => dispatch(removeProduct(id)),
     };
 };
 
