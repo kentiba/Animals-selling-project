@@ -139,7 +139,11 @@ class SearchField extends Component {
                                 {previousPage}
                             </li>
                         )}
-                        <li value={currentPage} onClick={this.handleClick}>
+                        <li
+                            value={currentPage}
+                            onClick={this.handleClick}
+                            className='active'
+                        >
                             {currentPage}
                         </li>
                         {hasNextPage && (
