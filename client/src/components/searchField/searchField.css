@@ -1,6 +1,6 @@
 /* styling the form */
 #searchBar {
-    width: 70%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -30,15 +30,17 @@ label {
     min-width: 0px;
 }
 .searchButton {
-    background-color: #49d66a;
+    background-color: #00695c;
+    color: white;
 }
 .searchButton:hover {
-    background-color: #3fcc60;
+    background-color: #057a6d;
 }
 
 /* Media query*/
 @media only screen and (max-width: 991px) {
     #searchBar {
         margin: auto;
+        width: 70%;
     }
 }

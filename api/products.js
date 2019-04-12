@@ -79,7 +79,7 @@ router.get('/get', (req, res) => {
         //Pagination logic
         let firstPageBox;
         let lastPageBox;
-        let currentPage = pageNumber ? +pageNumber : +1; // page number
+        let currentPage = +pageNumber ? +pageNumber : +1; // page number
         let lastPage = Math.ceil(data.count / limit); // count how many lastPage will the website have
         let hasNextPage = limit * currentPage < data.count;
         let hasPreviousPage = currentPage > 1;

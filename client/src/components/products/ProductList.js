@@ -35,10 +35,10 @@ class ProductList extends Component {
                     <div className='col-md-12 paginationBar'>
                         <Pagination />
                     </div>
-                    <div className='col-md-12 col-lg-4 searchBar'>
+                    <div className='col-md-12 col-lg-3 searchBar'>
                         <SearchField />
                     </div>
-                    <div className='col-md-12 col-lg-8 productCards'>
+                    <div className='col-md-12 col-lg-9 productCards'>
                         <div className='row justify-content-center'>
                             {renderProducts.length !== 0 ? (
                                 renderProducts
