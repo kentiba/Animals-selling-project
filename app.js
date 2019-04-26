@@ -58,10 +58,11 @@ app.use('/users', users);
 app.use('/orders', orders);
 app.use('/clients', clients);
 
-//Serve static assests if in production
+//Server static assests if in production
 if (process.env.NODE_ENV === 'production') {
-    // Set static folder
+    //Set static folder
     app.use(express.static('client/build'));
+
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     });
