@@ -1,6 +1,7 @@
+const keys = require('./keys');
 const Sequelize = require('sequelize');
-module.exports = new Sequelize('products', 'root', 'password', {
-    host: 'localhost',
+module.exports = new Sequelize(keys.database, keys.username, keys.password, {
+    host: keys.host,
     dialect: 'mysql',
     operatorsAliases: false,
 
