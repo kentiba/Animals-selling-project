@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const db = require('./config/db');
+const path = require('path');
 
 //setting port
 const port = process.env.PORT || 4000;
@@ -56,6 +57,15 @@ app.use('/products', products);
 app.use('/users', users);
 app.use('/orders', orders);
 app.use('/clients', clients);
+
+//Serve static assests if in production
+if (process.env.NODE_ENV === 'production') {
+    // Set static folder
+    app.use(express.static('client/build'));
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
+}
 
 app.listen(port, () => {
     console.log('Server is running on ' + port);
