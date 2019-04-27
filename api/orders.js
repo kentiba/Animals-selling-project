@@ -93,8 +93,10 @@ router.post('/', (req, res) => {
 
     // send mail with defined transport object
     transporter.sendMail(mailOptions, (err, info) => {
-        if (err) res.status(400).json(err);
-        else {
+        if (err) {
+            res.status(400).json(err);
+            console.log('sendMail' + err);
+        } else {
             Client.create({
                 name,
                 note,
@@ -113,10 +115,16 @@ router.post('/', (req, res) => {
                             breed: prod.breed,
                             location: prod.location,
                             description: prod.description,
-                        }).catch(err => res.status(400).json(err));
+                        }).catch(err => {
+                            res.status(400).json(err);
+                            console.log('createOrder' + err);
+                        });
                     });
                 })
-                .catch(err => res.status(400).json(err));
+                .catch(err => {
+                    res.status(400).json(err);
+                    console.log('afterCreateOrder' + err);
+                });
 
             res.status(200).json('Email sent');
         }
