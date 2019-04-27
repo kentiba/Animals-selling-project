@@ -75,6 +75,8 @@ router.post('/', (req, res) => {
     //using a disposable email currently. Chnage later to the actual address
     let transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
+        port: 587,
+        secure: false,
         auth: {
             user: 'temporaryEmail9921@gmail.com',
             pass: 'temporary_email',
