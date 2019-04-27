@@ -74,19 +74,22 @@ router.post('/', (req, res) => {
     // create reusable transporter object using the default SMTP transport
     //using a disposable email currently. Chnage later to the actual address
     let transporter = nodemailer.createTransport({
-        host: 'smtp.gmail.com',
-        port: 587,
+        host: 'smtp.yahoo.com',
+        port: 465,
+        service: 'yahoo',
         secure: false,
         auth: {
-            user: 'temporaryEmail9921@gmail.com',
-            pass: 'temporary_email',
+            user: 'temporary_email112@yahoo.com',
+            pass: 'temp123456',
         },
+        debug: false,
+        logger: true,
     });
 
     // setup email data with unicode symbols
     let mailOptions = {
-        from: 'temporaryEmail9921@gmail.com', // sender address
-        to: `${email} , temporaryEmail9921@gmail.com`, // list of receivers
+        from: 'temporary_email112@yahoo.com', // sender address
+        to: `${email} , temporary_email112@yahoo.com`, // list of receivers
         subject: 'New order', // Subject line
         html: information, // html body
     };
