@@ -1,10 +1,25 @@
 /* style  for checkout components */
+.checkout-container {
+    height: 68vh;
+}
 .checkout td {
     vertical-align: middle;
 }
 
+.table {
+    background-color: white;
+}
+
 /* Style  for ordered components */
 .orderSubmitted {
-    margin-top: 8rem;
-    margin-bottom: 2rem;
+    height: 86vh;
+    padding-top: 2rem;
+    position: relative;
+}
+
+.text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

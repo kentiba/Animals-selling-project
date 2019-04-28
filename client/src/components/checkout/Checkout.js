@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
+import classnames from 'classnames';
 import {
     getCheckoutList,
     removeProduct,
@@ -97,7 +98,12 @@ class Checkout extends Component {
         });
         return (
             <div className='container py-5 mt-3'>
-                <div className='text-center'>
+                <div
+                    className={classnames(
+                        'text-center',
+                        checkoutList.length === 0 ? 'checkout-container' : null,
+                    )}
+                >
                     <h1>Checkout </h1>
                     <div className='table-responsive'>
                         <table className='table table-hover'>
@@ -118,76 +124,76 @@ class Checkout extends Component {
                     <div>
                         {checkoutList.length === 0 && <p>No item was added</p>}
                     </div>
+                    {checkoutList.length !== 0 && (
+                        <div className='text-center'>
+                            <h5>
+                                Please write your information below so we can
+                                contact you as soon as possible
+                            </h5>
+                            {/* show only if errors exist */}
+                            {Object.keys(errors).length > 0 && (
+                                <div className='alert alert-danger'>
+                                    <p>
+                                        we encountered an error while processing
+                                        your request, please refresh the page
+                                        and try again
+                                    </p>
+                                </div>
+                            )}
+                            {/* Spinner */}
+                            {this.toggleSpinner()}
+                            <form onSubmit={this.handleSubmit}>
+                                <div className='form-group'>
+                                    <label htmlFor='name'>Name</label>
+                                    <input
+                                        type='text'
+                                        className='form-control w-50 m-auto'
+                                        id='name'
+                                        onChange={this.handleChange}
+                                        required
+                                    />
+                                </div>
+                                <div className='form-group'>
+                                    <label htmlFor='email'>Email</label>
+                                    <input
+                                        type='email'
+                                        className='form-control w-50 m-auto'
+                                        id='email'
+                                        onChange={this.handleChange}
+                                        required
+                                    />
+                                </div>
+                                <div className='form-group'>
+                                    <label htmlFor='phone'>Phone number</label>
+                                    <input
+                                        type='number'
+                                        className='form-control w-50 m-auto'
+                                        id='phone'
+                                        onChange={this.handleChange}
+                                        required
+                                    />
+                                </div>
+                                <div className='form-group'>
+                                    <label htmlFor='note'>
+                                        Any additional request ?
+                                    </label>
+                                    <textarea
+                                        className='form-control w-50 m-auto'
+                                        id='note'
+                                        rows='3'
+                                        onChange={this.handleChange}
+                                    />
+                                </div>
+                                <button
+                                    className='btn btn-outline-success m-auto'
+                                    type='submit'
+                                >
+                                    Submit My Order
+                                </button>
+                            </form>
+                        </div>
+                    )}
                 </div>
-                {checkoutList.length !== 0 && (
-                    <div className='text-center'>
-                        <h5>
-                            Please write your information below so we can
-                            contact you as soon as possible
-                        </h5>
-                        {/* show only if errors exist */}
-                        {Object.keys(errors).length > 0 && (
-                            <div className='alert alert-danger'>
-                                <p>
-                                    we encountered an error while processing
-                                    your request, please refresh the page and
-                                    try again
-                                </p>
-                            </div>
-                        )}
-                        {/* Spinner */}
-                        {this.toggleSpinner()}
-                        <form onSubmit={this.handleSubmit}>
-                            <div className='form-group'>
-                                <label htmlFor='name'>Name</label>
-                                <input
-                                    type='text'
-                                    className='form-control w-50 m-auto'
-                                    id='name'
-                                    onChange={this.handleChange}
-                                    required
-                                />
-                            </div>
-                            <div className='form-group'>
-                                <label htmlFor='email'>Email</label>
-                                <input
-                                    type='email'
-                                    className='form-control w-50 m-auto'
-                                    id='email'
-                                    onChange={this.handleChange}
-                                    required
-                                />
-                            </div>
-                            <div className='form-group'>
-                                <label htmlFor='phone'>Phone number</label>
-                                <input
-                                    type='number'
-                                    className='form-control w-50 m-auto'
-                                    id='phone'
-                                    onChange={this.handleChange}
-                                    required
-                                />
-                            </div>
-                            <div className='form-group'>
-                                <label htmlFor='note'>
-                                    Any additional request ?
-                                </label>
-                                <textarea
-                                    className='form-control w-50 m-auto'
-                                    id='note'
-                                    rows='3'
-                                    onChange={this.handleChange}
-                                />
-                            </div>
-                            <button
-                                className='btn btn-outline-success m-auto'
-                                type='submit'
-                            >
-                                Submit My Order
-                            </button>
-                        </form>
-                    </div>
-                )}
             </div>
         );
     }

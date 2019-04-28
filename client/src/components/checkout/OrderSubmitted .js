@@ -7,8 +7,8 @@ class OrderSubmitted extends Component {
     };
     render() {
         return (
-            <div className='container orderSubmitted'>
-                <div className='text-center'>
+            <div className='container orderSubmitted '>
+                <div className='text-center text'>
                     <h1>Thank you!</h1>
                     <p>
                         Your order has been sent. You will get a copy to the
@@ -21,7 +21,7 @@ class OrderSubmitted extends Component {
                         contact us on <strong>example@example.com</strong>
                     </p>
                     <button
-                        className='btn btn-outline-primary'
+                        className='btn btn-outline-success'
                         onClick={this.handleClick}
                     >
                         Back to home page
