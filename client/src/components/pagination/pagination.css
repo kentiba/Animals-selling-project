@@ -1,16 +1,25 @@
 /* styling pagination component */
 .pagination {
     justify-content: center;
+    margin-left: 20rem;
 }
 .pagination li {
     cursor: pointer;
-    color: #00695c;
+    color: #3f3047;
     padding: 0.5rem;
-    border: 1px solid #00695c;
-    margin: 0 1rem;
+    border: 1px solid #3f3047;
+    margin: 0 0.7rem;
 }
 
 .pagination .active {
-    background-color: #00695c;
+    background-color: #3f3047;
     color: white;
+}
+
+/* Media query*/
+@media only screen and (max-width: 991px) {
+    .pagination {
+        justify-content: center;
+        margin-left: 0;
+    }
 }

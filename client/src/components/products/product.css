@@ -16,9 +16,13 @@
 }
 
 .no-products {
-    justify-content: center;
-    align-items: center;
-    margin-top: 20vh;
+    margin-top: 1.5rem;
+    width: 80%;
+}
+
+.serverError {
+    color: red;
+    font-size: 2rem;
     width: 80%;
 }
 
@@ -46,6 +50,7 @@
 /* Styling productList */
 .paginationBar {
     order: 1;
+    margin-top: 2.5rem;
 }
 .searchBar {
     order: 2;

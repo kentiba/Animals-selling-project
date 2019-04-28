@@ -1,5 +1,12 @@
 .main-footer {
     text-align: center;
     padding: 1rem;
+    margin-bottom: -1.9rem;
     color: white;
+    background-color: #3f3047;
+}
+
+.navbar {
+    margin: 0 30px;
+    background-color: #3f3047;
 }

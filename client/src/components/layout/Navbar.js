@@ -61,7 +61,7 @@ class navbar extends Component {
             </Fragment>
         );
         return (
-            <nav className='navbar navbar-expand-lg navbar-dark bg-primary fixed-top'>
+            <nav className='navbar navbar-expand-lg navbar-dark fixed-top'>
                 <div className='container'>
                     <Link className='navbar-brand' to={'/'}>
                         LOGO

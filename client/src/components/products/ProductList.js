@@ -21,9 +21,14 @@ class ProductList extends Component {
         this.props.getProductList();
     }
     render() {
+        let serverError;
         const {products} = this.state;
         if (products === initialStateProducts) {
-            return null;
+            serverError = (
+                <div className='serverError'>
+                    Server error. Please refresh the page
+                </div>
+            );
         }
 
         const renderProducts = products.map((product, index) => {
@@ -31,7 +36,7 @@ class ProductList extends Component {
         });
         return (
             <div className='container-fluid'>
-                <div className='row py-5 mt-3'>
+                <div className='row'>
                     <div className='col-md-12 paginationBar'>
                         <Pagination />
                     </div>
@@ -51,6 +56,7 @@ class ProductList extends Component {
                                     </h1>
                                 </div>
                             )}
+                            {serverError}
                         </div>
                     </div>
                 </div>

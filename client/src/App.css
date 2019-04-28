@@ -1,3 +1,14 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    padding: 30px;
+    background: #fff;
+}
+
 .App {
-    font-family: 'Bitter', serif;
+    font-family: 'lato', serif;
+    background: #e3f5d6;
 }
