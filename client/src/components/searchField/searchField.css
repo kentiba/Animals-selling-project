@@ -7,6 +7,11 @@
     background-color: #c7cec2;
     margin-bottom: 1rem;
     margin-left: -0.9rem;
+    margin-top: -4.4rem;
+}
+
+.searchBarMargin {
+    margin-top: -0.8rem !important;
 }
 
 #searchBar p,
@@ -44,5 +49,8 @@ label {
         margin: auto;
         width: 70%;
         margin-top: 2rem;
+    }
+    .searchBarMargin {
+        margin-top: 2rem !important;
     }
 }

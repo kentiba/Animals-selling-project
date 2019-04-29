@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {getProductList} from '../../store/actions/projectActions';
 import './searchField.css';
+import classnames from 'classnames';
 
 const gramPerKilo = 1000;
 
@@ -69,8 +70,15 @@ class SearchField extends Component {
         );
     };
     render() {
+        const {productLIst} = this.props;
         return (
-            <form id='searchBar' onSubmit={this.handleSubmit}>
+            <form
+                id='searchBar'
+                className={classnames(
+                    productLIst.length === 0 ? 'searchBarMargin' : '',
+                )}
+                onSubmit={this.handleSubmit}
+            >
                 <div>
                     <h5>Age</h5>
                     <div className='age'>
@@ -180,6 +188,12 @@ class SearchField extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        productLIst: state.project.productsList,
+    };
+};
+
 const mapDispatchToProps = dispatch => {
     return {
         getProductList: (
@@ -206,6 +220,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps,
 )(SearchField);

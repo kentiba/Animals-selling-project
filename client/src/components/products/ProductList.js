@@ -20,13 +20,16 @@ class ProductList extends Component {
     componentDidMount() {
         this.props.getProductList();
     }
+
     render() {
-        let serverError;
         const {products} = this.state;
         if (products === initialStateProducts) {
-            serverError = (
-                <div className='serverError'>
-                    Server error. Please refresh the page
+            return (
+                <div className='row serverError'>
+                    <h1>
+                        There is an error in the server. Please refresh the page
+                        or try later
+                    </h1>
                 </div>
             );
         }
@@ -56,7 +59,6 @@ class ProductList extends Component {
                                     </h1>
                                 </div>
                             )}
-                            {serverError}
                         </div>
                     </div>
                 </div>

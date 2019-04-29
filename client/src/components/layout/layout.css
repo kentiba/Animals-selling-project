@@ -10,3 +10,20 @@
     margin: 0 30px;
     background-color: #3f3047;
 }
+
+.logo {
+    position: absolute;
+    top: -4.2rem;
+    left: 0;
+}
+
+.logo:hover {
+    color: white;
+}
+
+.nav-link {
+    transition: all 0.5s;
+}
+.nav-link:hover {
+    transform: translateY(-3px);
+}

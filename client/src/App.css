@@ -1,14 +1,18 @@
-* {
+*,
+*::after,
+*::before {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: inherit;
 }
 body {
     padding: 30px;
     background: #fff;
+    box-sizing: border-box;
 }
 
 .App {
     font-family: 'lato', serif;
     background: #e3f5d6;
+    box-shadow: -1px -4px 20px 2px #3f3047;
 }

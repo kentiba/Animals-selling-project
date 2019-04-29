@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {getCheckoutList} from '../../store/actions/projectActions';
 import {logoutUser} from '../../store/actions/userAction';
+import Logo from '../../assets/Logo.png';
 
 class navbar extends Component {
     componentWillMount() {
@@ -64,7 +65,7 @@ class navbar extends Component {
             <nav className='navbar navbar-expand-lg navbar-dark fixed-top'>
                 <div className='container'>
                     <Link className='navbar-brand' to={'/'}>
-                        LOGO
+                        <img src={Logo} alt='Logo' className='logo' />
                     </Link>
                     <button
                         className='navbar-toggler'
