@@ -3,6 +3,7 @@ import {loginUser} from '../../store/actions/userAction';
 import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import classnames from 'classnames';
+import './auth.css';
 
 class Login extends Component {
     state = {
@@ -41,11 +42,11 @@ class Login extends Component {
         const {errors} = this.state;
         return (
             <div className='container text-center py-5 mt-3'>
-                <div className='row'>
+                <div className='row login-container'>
                     <div className='col-md-6 mt-5 mx-auto'>
                         <form onSubmit={this.handleSubmit}>
-                            <h1 className='h3 mb-3 font-weight-normal'>
-                                Log in
+                            <h1 className='h1 mb-3 font-weight-normal'>
+                                Admin
                             </h1>
                             <div className='form-group'>
                                 <label htmlFor='email'>Email</label>

@@ -51,12 +51,14 @@ const products = require('./api/products');
 const users = require('./api/users');
 const orders = require('./api/orders');
 const clients = require('./api/clients');
+const messages = require('./api/messages');
 
 //Use Routes
 app.use('/products', products);
 app.use('/users', users);
 app.use('/orders', orders);
 app.use('/clients', clients);
+app.use('/messages', messages);
 
 //Server static assests if in production
 if (process.env.NODE_ENV === 'production') {

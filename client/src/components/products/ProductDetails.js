@@ -1,42 +1,17 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {addToCart, removeProduct} from '../../store/actions/projectActions';
-import {confirmAlert} from 'react-confirm-alert';
 import defaultImage from '../../assets/default.png';
 import AgeConvertor from '../common/AgeConvertor';
 import dayjs from 'dayjs';
-import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import './product.css';
 
 class ProductDeatils extends Component {
     handleClick = e => {
         e.preventDefault();
-        const {products, addToCart, checkout} = this.props;
-        //Might remove this since the client can never add a product twice
-        if (checkout.find(prod => prod.id === products.id)) {
-            confirmAlert({
-                customUI: ({onClose}) => {
-                    return (
-                        <div className='custom-ui'>
-                            <h1>
-                                This product has already been added to checkout
-                            </h1>
-                            <button
-                                type='button'
-                                className='btn btn-outline-danger'
-                                onClick={onClose}
-                            >
-                                Ok
-                            </button>
-                        </div>
-                    );
-                },
-            });
-        } else {
-            addToCart(products);
-        }
+        const {products, addToCart} = this.props;
+        addToCart(products);
     };
-
     cartButton = id => {
         const {checkout, removeProduct} = this.props;
         if (checkout.find(product => product.id === id)) {

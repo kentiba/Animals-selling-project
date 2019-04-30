@@ -8,6 +8,7 @@ import {
     GET_ORDERS_LIST,
     GET_CLIENTS_LIST,
     POST_LOADING,
+    SUBMIT_MESSAGE,
 } from './actionTypes';
 import axios from 'axios';
 
@@ -180,6 +181,25 @@ export const getClientsList = () => dispatch => {
                 payload: res.data.data,
             }),
         )
+        .catch(err =>
+            dispatch({
+                type: GET_ERRORS,
+                payload: err.response.data,
+            }),
+        );
+};
+
+//Submit a message from the user
+
+export const submitMessage = info => dispatch => {
+    dispatch(setPostLoading());
+    axios
+        .post('/messages', info)
+        .then(() => {
+            dispatch({
+                type: SUBMIT_MESSAGE,
+            });
+        })
         .catch(err =>
             dispatch({
                 type: GET_ERRORS,

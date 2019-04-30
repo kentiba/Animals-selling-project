@@ -18,7 +18,9 @@ class OrderSubmitted extends Component {
                     </p>
                     <p>
                         If you have any inquiries, please dont hesitate to
-                        contact us on <strong>example@example.com</strong>
+                        contact us on
+                        <br />
+                        <strong>temporary_email112@yahoo.com</strong>
                     </p>
                     <button
                         className='btn btn-outline-success'

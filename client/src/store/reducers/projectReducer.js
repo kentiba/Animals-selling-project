@@ -7,6 +7,7 @@ import {
     GET_CLIENTS_LIST,
     POST_LOADING,
     SUBMIT_REQUEST,
+    SUBMIT_MESSAGE,
 } from '../actions/actionTypes';
 const initState = {
     productsList: [],
@@ -31,22 +32,27 @@ const initState = {
     ordersList: [],
     clientsList: [],
     loading: false,
+    messageSubmitted: false,
 };
 
 const projectReducer = (state = initState, action) => {
     switch (action.type) {
-        case POST_LOADING: {
+        case POST_LOADING:
             return {
                 ...state,
                 loading: true,
             };
-        }
-        case SUBMIT_REQUEST: {
+        case SUBMIT_REQUEST:
             return {
                 ...state,
                 loading: false,
             };
-        }
+        case SUBMIT_MESSAGE:
+            return {
+                ...state,
+                loading: false,
+                messageSubmitted: true,
+            };
         case GET_PRODUCT_LIST:
             return {
                 ...state,
@@ -68,7 +74,6 @@ const projectReducer = (state = initState, action) => {
                     breed: action.payload.breed,
                 },
             };
-
         case GET_CHECKOUT_LIST:
             return {
                 ...state,
