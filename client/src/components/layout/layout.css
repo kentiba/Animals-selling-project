@@ -17,12 +17,16 @@
     left: 0;
 }
 
-.logo:hover {
+/* .logo:hover {
     color: white;
-}
+} */
 
 .nav-link {
     transition: all 0.5s;
+}
+
+.navbar-nav:hover .nav-link {
+    color: rgba(129, 127, 127, 0.493);
 }
 .nav-link:hover {
     transform: translateY(-3px);
