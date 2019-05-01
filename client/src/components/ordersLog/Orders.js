@@ -33,7 +33,7 @@ class Orders extends Component {
                             Back to clients
                         </Link>
                     </div>
-                    <h1>List of all the orders </h1>
+                    <h1 className='elegantshadow'>List of all the orders </h1>
                     <div className='table-responsive'>
                         <table className='table table-hover table-sm'>
                             <thead>

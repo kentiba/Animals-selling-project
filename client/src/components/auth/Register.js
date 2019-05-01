@@ -43,7 +43,7 @@ class Register extends Component {
                 <div className='row'>
                     <div className='col-md-6 mt-5 mx-auto'>
                         <form onSubmit={this.handleSubmit}>
-                            <h1 className='h1 mb-3 font-weight-normal'>
+                            <h1 className='h1 mb-3 font-weight-normal elegantshadow'>
                                 Register A New Admin
                             </h1>
                             <div className='form-group'>

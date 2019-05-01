@@ -69,7 +69,7 @@ class Contact extends Component {
                 <div className='row'>
                     <div className='col-md-6 mt-5 mx-auto'>
                         <form onSubmit={this.handleSubmit}>
-                            <h1 className='mb-3'>Contact Us</h1>
+                            <h1 className='mb-3 elegantshadow'>Contact Us</h1>
                             {/* show only if errors exist */}
                             {Object.keys(errors).length > 0 && (
                                 <div className='alert alert-danger'>

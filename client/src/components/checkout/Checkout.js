@@ -104,7 +104,7 @@ class Checkout extends Component {
                         checkoutList.length === 0 ? 'checkout-container' : null,
                     )}
                 >
-                    <h1>Checkout </h1>
+                    <h1 className='elegantshadow'>Checkout </h1>
                     <div className='table-responsive'>
                         <table className='table table-hover'>
                             <thead>

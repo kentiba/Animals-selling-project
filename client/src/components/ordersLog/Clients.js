@@ -33,7 +33,7 @@ class Clients extends Component {
         return (
             <div className='py-5 m-3'>
                 <div className='text-center'>
-                    <h1>List of all the clients</h1>
+                    <h1 className='elegantshadow'>List of all the clients</h1>
                     <div className='table-responsive'>
                         <table className='table table-hover table-sm'>
                             <thead>

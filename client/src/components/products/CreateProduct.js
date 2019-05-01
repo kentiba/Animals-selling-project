@@ -57,7 +57,9 @@ class CreateProduct extends Component {
         const {errors} = this.props;
         return (
             <div className='container text-center py-5 mt-3'>
-                <h1>Create a new profile for your product</h1>
+                <h1 className='elegantshadow'>
+                    Create a new profile for your product
+                </h1>
 
                 <form
                     onSubmit={this.handleSubmit}
