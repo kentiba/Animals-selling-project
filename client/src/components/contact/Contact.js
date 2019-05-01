@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {submitMessage} from '../../store/actions/projectActions';
 import Spinner from '../../assets/loading.gif';
+import Recaptcha from 'react-recaptcha';
 import './contact.css';
 
 class Contact extends Component {
@@ -9,7 +10,7 @@ class Contact extends Component {
         name: '',
         email: '',
         message: '',
-        verified: false,
+        isVerified: false,
     };
 
     handleChange = e => {
@@ -21,7 +22,11 @@ class Contact extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        this.props.submitMessage(this.state);
+        if (this.state.isVerified) {
+            this.props.submitMessage(this.state);
+        } else {
+            alert('Please verify that you are a human');
+        }
     };
     //for the spinner
     toggleSpinner = () => {
@@ -46,6 +51,14 @@ class Contact extends Component {
             );
         }
         return null;
+    };
+
+    verifyCallback = response => {
+        if (response) {
+            this.setState({
+                isVerified: true,
+            });
+        }
     };
 
     render() {
@@ -109,7 +122,14 @@ class Contact extends Component {
                                             required
                                         />
                                     </div>
-
+                                    <div className='recpatcha'>
+                                        <Recaptcha
+                                            sitekey='6Lf8PqEUAAAAAN2OhFP1t-2-fVE3Sn4j0-thgDlM'
+                                            render='explicit'
+                                            onloadCallback={() => {}}
+                                            verifyCallback={this.verifyCallback}
+                                        />
+                                    </div>
                                     <button
                                         type='submit'
                                         className='btn btn-primary mb-3'
