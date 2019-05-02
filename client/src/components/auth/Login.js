@@ -67,7 +67,7 @@ class Login extends Component {
                                     </div>
                                 )}
                             </div>
-                            <div className='form-group'>
+                            <div className='form-group pb-3'>
                                 <label htmlFor='password'>Password</label>
                                 <input
                                     type='password'
