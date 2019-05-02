@@ -40,8 +40,9 @@
 }
 
 .no-products {
-    margin-top: 1.5rem;
+    margin-top: 10rem;
     width: 80%;
+    text-align: center;
 }
 
 .serverError {
@@ -92,7 +93,9 @@
     .productCards {
         order: 3;
     }
-
+    .no-products {
+        margin-top: 1.5rem;
+    }
     .serverError h1 {
         width: 50%;
         font-size: 2rem;

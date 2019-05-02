@@ -54,7 +54,7 @@ class ProductList extends Component {
                                 <div className='no-products'>
                                     <h1>
                                         There are no products matching your
-                                        requst. Please refresh the page or
+                                        request. Please refresh the page or
                                         change your search parameters
                                     </h1>
                                 </div>
