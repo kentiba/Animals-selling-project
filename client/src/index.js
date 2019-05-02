@@ -11,14 +11,28 @@ import setAuthToken from './utils/setAuthToken';
 import * as serviceWorker from './serviceWorker';
 
 //create store and connect redux to redux-devtools
-const store = createStore(
-    rootReducer,
-    compose(
-        applyMiddleware(thunk),
-        window.__REDUX_DEVTOOLS_EXTENSION__ &&
-            window.__REDUX_DEVTOOLS_EXTENSION__(),
-    ),
-);
+let store;
+if (process.env.NODE_ENV === 'production') {
+    store = createStore(rootReducer, compose(applyMiddleware(thunk)));
+} else {
+    store = createStore(
+        rootReducer,
+        compose(
+            applyMiddleware(thunk),
+            window.__REDUX_DEVTOOLS_EXTENSION__ &&
+                window.__REDUX_DEVTOOLS_EXTENSION__(),
+        ),
+    );
+}
+
+// const store = createStore(
+//     rootReducer,
+//     compose(
+//         applyMiddleware(thunk),
+//         window.__REDUX_DEVTOOLS_EXTENSION__ &&
+//             window.__REDUX_DEVTOOLS_EXTENSION__(),
+//     ),
+// );
 
 //we do it so when page is reloaded the info is still there about user authentication
 //check for token
