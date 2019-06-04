@@ -29,3 +29,9 @@
 .nav-link:hover {
     transform: translateY(-3px);
 }
+
+@media (max-width: 991px) {
+    .navbar {
+        margin: 0;
+    }
+}
