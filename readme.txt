@@ -5,6 +5,14 @@ cd server
 
 npm install && npm run client-install
 
+
+-----------------
+
+to run the server online:
+
+cd server
+
+npm run start
 -----------------
 
 to build the project: 
@@ -23,7 +31,7 @@ npm run dev
 
 In order to add yourself as an admin, you have to login first. use this temporary email to get access 
 
-email: test@gmail.com	
+email: test@test.com	
 password: 111111
 
 register youself as an admin , then go to the database and delete the temporary admin.

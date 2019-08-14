@@ -44,7 +44,7 @@ const upload = multer({
 }).single('image');
 
 //Get list of the products
-router.get('/get', (req, res) => {
+router.get('/', (req, res) => {
     const {
         ageFrom,
         ageTo,
@@ -146,7 +146,7 @@ router.get('/get', (req, res) => {
 });
 
 //Add a new product
-router.post('/add', (req, res, err) => {
+router.post('/', (req, res, err) => {
     upload(req, res, err => {
         //check if the uploaded photo meets the requirements
         if (err) {
@@ -194,7 +194,7 @@ router.post('/add', (req, res, err) => {
 });
 
 //Update a product
-router.put('/update', (req, res) => {
+router.put('/', (req, res) => {
     upload(req, res, err => {
         //check if the uploaded photo meets the requirements
         if (err) {
@@ -270,7 +270,7 @@ router.put('/update', (req, res) => {
 // });
 
 //Delete a product
-router.delete('/delete', (req, res) => {
+router.delete('/', (req, res) => {
     const {id} = req.body;
     //delete the picture from databse before deleting the product
     Product.find({where: {id}}).then(project =>

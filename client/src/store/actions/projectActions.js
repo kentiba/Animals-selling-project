@@ -24,7 +24,7 @@ export const getProductList = (
     pageNumber,
 ) => dispatch => {
     axios
-        .get('/products/get', {
+        .get('/products', {
             params: {
                 ageFrom,
                 ageTo,
@@ -75,7 +75,7 @@ export const getCheckoutList = () => dispatch => {
 // to update a certain product
 export const updateProduct = (product, history) => dispatch => {
     axios
-        .put('/products/update', product)
+        .put('/products', product)
         .then(() => history.push('/'))
         .catch(err =>
             dispatch({
@@ -88,7 +88,7 @@ export const updateProduct = (product, history) => dispatch => {
 // to delete a certain product
 export const deleteProduct = (id, history) => dispatch => {
     axios
-        .delete('/products/delete', {
+        .delete('/products', {
             data: {id},
         })
         .then(() => history.push('/'))
@@ -103,7 +103,7 @@ export const deleteProduct = (id, history) => dispatch => {
 // to create a new product
 export const createProduct = (product, history) => dispatch => {
     axios
-        .post('/products/add', product)
+        .post('/products', product)
         .then(() => {
             window.location.reload(true);
         })
